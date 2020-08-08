@@ -21,7 +21,9 @@ func SavePrivateKey(key *key.PrivateKey, name string) {
 
 	data := []byte(bytesToString)
 
-	err := ioutil.WriteFile(fmt.Sprintf("%v.%v", name, "key"), data, 0)
+	filename := fmt.Sprintf("%v.%v", name, "key")
+	os.Remove(filename)
+	err := ioutil.WriteFile(filename, data, 0777)
 
 	if err != nil {
 		checkError(err)
@@ -30,11 +32,15 @@ func SavePrivateKey(key *key.PrivateKey, name string) {
 
 func SavePublicKey(key *key.PublicKey, name string) {
 	keyToBytes := rsa.PublicKeyToBytes(key)
-	bytesToString := b64.StdEncoding.EncodeToString(keyToBytes)
+	bytesToString := b64.RawURLEncoding.EncodeToString(keyToBytes)
 
-	data := []byte(bytesToString)
+	jwk := NewJwk(bytesToString, name)
+	json := JwkToJson(jwk)
+	data := []byte(json)
 
-	err := ioutil.WriteFile(fmt.Sprintf("%v.%v", name, "json"), data, 0)
+	filename := fmt.Sprintf("%v.%v", name, "json")
+	os.Remove(filename)
+	err := ioutil.WriteFile(filename, data, 0777)
 
 	if err != nil {
 		checkError(err)

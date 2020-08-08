@@ -1,7 +1,10 @@
 package main
 
-import "ellis.io/crypto/keys"
+import (
+	"ellis.io/command"
+	"os"
+)
 
 func main() {
-	keys.WriteKeys("s625")
+	command.KeyGenerateArgs{Args: os.Args}.Execute()
 }
