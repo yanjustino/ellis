@@ -101,18 +101,9 @@ func ejectSecret(t *testing.T)  {
 		return
 	}
 
-	if fileExists("project.json"){
-		t.Errorf("Fail: project.json was not DELETED")
-	}
-
-	if fileExists("project.data"){
-		t.Errorf("Fail: project.data was not DELETED")
-	}
-
 	if !fileExists("project.settings.json"){
 		t.Errorf("Fail: project.settings.json was not CREATED")
 	}
-
 }
 
 func cleanAll() {

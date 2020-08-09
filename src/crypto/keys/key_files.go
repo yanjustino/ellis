@@ -37,13 +37,13 @@ func LoadPublicKey(jwk Jwk) (key *key.PublicKey, err error) {
 
 func savePrivateKey(key *key.PrivateKey, name string) error {
 	bytes := rsa.PrivateKeyToBytes(key)
-	bytesToString := b64.StdEncoding.EncodeToString(bytes)
+	//bytesToString := b64.StdEncoding.EncodeToString(bytes)
 
-	data := []byte(bytesToString)
+	//data := []byte(bytesToString)
 
 	filename := fmt.Sprintf("%v.%v", name, "key")
 	os.Remove(filename)
-	err := ioutil.WriteFile(filename, data, 0777)
+	err := ioutil.WriteFile(filename, bytes, 0777)
 
 	if err != nil {
 		return err
