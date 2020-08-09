@@ -58,10 +58,10 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dist" />
   </component>
-  <component name="RunManager" selected="Go Test.go test ellis.io/tests">
-    <configuration name="go build ellis.io" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.ellis.io">
+    <configuration name="ellis.io" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="src" />
       <working_directory value="$PROJECT_DIR$" />
-      <parameters value="view -k s625.json" />
       <kind value="PACKAGE" />
       <package value="ellis.io" />
       <directory value="$PROJECT_DIR$" />
@@ -77,6 +77,28 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestAllCommands in ellis.io/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ellis.io/tests" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestAllCommands$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestExecuteAllCommands in ellis.io/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/tests" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="ellis.io/tests" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestExecuteAllCommands$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test ellis.io/tests" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="src" />
       <working_directory value="$PROJECT_DIR$/tests" />
@@ -88,12 +110,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build ellis.io" />
+      <item itemvalue="Go Build.ellis.io" />
       <item itemvalue="Go Build.go build key_files.go" />
       <item itemvalue="Go Test.go test ellis.io/tests" />
+      <item itemvalue="Go Test.TestExecuteAllCommands in ellis.io/tests" />
+      <item itemvalue="Go Test.TestAllCommands in ellis.io/tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestAllCommands in ellis.io/tests" />
+        <item itemvalue="Go Test.TestExecuteAllCommands in ellis.io/tests" />
         <item itemvalue="Go Test.go test ellis.io/tests" />
         <item itemvalue="Go Build.go build key_files.go" />
       </list>
@@ -183,10 +209,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1596913450576" />
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596985223971">
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597001233028">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596985223971" />
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597001233028" />
     <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596940788879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -195,46 +221,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1596897355137" />
-    <state width="695" height="466" key="DebuggerActiveHint" timestamp="1596930818989">
+    <state width="695" height="466" key="DebuggerActiveHint" timestamp="1596999034754">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="695" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1596930818989" />
+    <state width="695" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1596999034754" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1596975324963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596975324963" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1596985855911">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1597001190869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596985855911" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1596985855911">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597001190869" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1597001190869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596985855911" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1596985855911">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597001190869" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1597001190869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596985855911" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1596985855911">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597001190869" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1597001190869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596985855911" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1596985731307">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597001190869" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1596999124834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596985731307" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1596985731307">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596999124834" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1596999124834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596985731307" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1596985731307">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596999124834" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1596999124834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596985731307" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1596985731307">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596999124834" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1596999124834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596985731307" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596999124834" />
     <state x="732" y="222" key="RollbackChangesDialog" timestamp="1596894955673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -261,15 +287,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/crypto/keys/key_files.go</url>
-          <line>40</line>
+          <line>54</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/command/command_eject_secrets.go</url>
-          <line>18</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/data/secret_key.go</url>
+          <line>25</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/src$go_test_ellis_io_tests.out" NAME="go test ellis.io/tests Coverage Results" MODIFIED="1596985929461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -9,20 +9,33 @@ import (
 	"os"
 )
 
-func WriteKeys(name string) {
+func WriteKeys(name string) error {
 	private, public := rsa.GenerateKeyPair()
-	savePrivateKey(private, name)
-	savePublicKey(public, name)
+
+	epriv := savePrivateKey(private, name)
+	if epriv != nil {
+		return epriv
+	}
+
+	epub := savePublicKey(public, name)
+	if epub != nil {
+		return epub
+	}
+
+	return nil
 }
 
-func LoadPublicKey(jwk Jwk) *key.PublicKey {
+func LoadPublicKey(jwk Jwk) (key *key.PublicKey, err error) {
 	toByte, err := b64.RawURLEncoding.DecodeString(jwk.Mod)
-	checkError(err)
 
-	return rsa.BytesToPublicKey(toByte)
+	if err != nil {
+		return nil, err
+	}
+
+	return rsa.BytesToPublicKey(toByte), nil
 }
 
-func savePrivateKey(key *key.PrivateKey, name string) {
+func savePrivateKey(key *key.PrivateKey, name string) error {
 	bytes := rsa.PrivateKeyToBytes(key)
 	bytesToString := b64.StdEncoding.EncodeToString(bytes)
 
@@ -33,16 +46,22 @@ func savePrivateKey(key *key.PrivateKey, name string) {
 	err := ioutil.WriteFile(filename, data, 0777)
 
 	if err != nil {
-		checkError(err)
+		return err
 	}
+	return nil
 }
 
-func savePublicKey(key *key.PublicKey, name string) {
+func savePublicKey(key *key.PublicKey, name string) error {
 	keyToBytes := rsa.PublicKeyToBytes(key)
 	bytesToString := b64.RawURLEncoding.EncodeToString(keyToBytes)
 
 	jwk := NewJwk(bytesToString, name)
-	json := JwkToJson(jwk)
+
+	json, e := JwkToJson(jwk)
+	if e != nil {
+		return e
+	}
+
 	data := []byte(json)
 
 	filename := fmt.Sprintf("%v.%v", name, "json")
@@ -50,13 +69,8 @@ func savePublicKey(key *key.PublicKey, name string) {
 	err := ioutil.WriteFile(filename, data, 0777)
 
 	if err != nil {
-		checkError(err)
+		return err
 	}
-}
 
-func checkError(err error) {
-	if err != nil {
-		fmt.Println("Fatal error ", err.Error())
-		os.Exit(1)
-	}
+	return nil
 }

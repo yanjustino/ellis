@@ -2,7 +2,6 @@ package command
 
 import (
 	"ellis.io/crypto/keys"
-	"ellis.io/utils"
 	"regexp"
 	"strings"
 )
@@ -17,18 +16,27 @@ func (args KeyGenerateArgs) CanExecute() bool {
 
 	input := strings.Join(param, " ")
 	ok, err := regexp.MatchString("keys\\s-g\\s[\\w](.|\\/)*", input)
-	utils.CheckError(err)
+	if err != nil {
+		println(err.Error())
+		return false
+	}
 
 	return ok
 }
 
-func (args KeyGenerateArgs) Execute() {
-	param := args.Args[1:]
-	if args.CanExecute() {
-		fileName := strings.Replace(param[2], " ", "_", -1)
-		keys.WriteKeys(fileName)
-		args.AfterExecute()
+func (args KeyGenerateArgs) Execute() (bool, error) {
+	if !args.CanExecute() {
+		return false, nil
 	}
+
+	param := args.Args[1:]
+	fileName := strings.Replace(param[2], " ", "_", -1)
+	e := keys.WriteKeys(fileName)
+	if e != nil {
+		return false, e
+	}
+	args.AfterExecute()
+	return true, nil
 }
 
 func (args KeyGenerateArgs) AfterExecute() {

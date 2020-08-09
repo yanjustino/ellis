@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"ellis.io/crypto/keys"
 	"ellis.io/crypto/rsa"
-	"ellis.io/utils"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -23,64 +22,103 @@ type Holder struct {
 	Items []SecretKey
 }
 
-const SecretFolder = "secrets/"
+func StoreSecretKey(jwkFileName string, key string, value string) error {
+	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
+	if e != nil{
+		return e
+	}
 
-func StoreSecretKey(jwkFileName string, key string, value string) {
-	jwk := keys.JwkFromJsonFilePath(SecretFolder + jwkFileName)
-	new := prepareRegister(jwk, key, value)
-	mps := groupSecretKeysByKey(jwkFileName, new)
+	new, e := prepareRegister(jwk, key, value)
+	if e != nil{
+		return e
+	}
+
+	mps, e := groupSecretKeysByKey(jwkFileName, new)
+	if e != nil{
+		return e
+	}
 
 	var values []string
 	for _, v := range mps {
-		json := parseSecretToByteArray(v)
+		json, e:= parseSecretToByteArray(v)
+		if e != nil{
+			return e
+		}
+
 		values = append(values, string(json))
 	}
 
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "data")
 	content := strings.Join(values, "\n")
 
-	createFileIfNonExists(fileName, []byte(content))
+	return createFileIfNonExists(fileName, []byte(content))
 }
 
-func FetchAllSecretKeys(jwkFileName string) {
-	holder := getSecretKeysHolder(jwkFileName)
+func FetchAllSecretKeys(jwkFileName string) error {
+	holder, e := getSecretKeysHolder(jwkFileName)
+	if e != nil {
+		return e
+	}
 
 	for i, s := range holder.Items {
 		line := fmt.Sprintf("[%v] key: %v - value: %v", i, s.Key, s.Value)
 		fmt.Println(line)
 	}
+
+	return nil
 }
 
-func FetchSecretKeysHolder(jwkFileName string, eject bool) {
-	holder := getSecretKeysHolder(jwkFileName)
+func FetchSecretKeysHolder(jwkFileName string, eject bool) error{
+	holder, e := getSecretKeysHolder(jwkFileName)
+	if e != nil {
+		return e
+	}
+
 	result, e := json.MarshalIndent(&holder, "", " ")
-	utils.CheckError(e)
+	if e != nil {
+		return e
+	}
 
 	if eject {
-		ejectSecretKeyHolder(jwkFileName, result)
+		return ejectSecretKeyHolder(jwkFileName, result)
 	} else {
 		println(string(result))
+		return nil
 	}
 }
 
 // PRIVATE SCOPE
 
-func ejectSecretKeyHolder(jwkFileName string, holder []byte) {
-	jwk := keys.JwkFromJsonFilePath(SecretFolder + jwkFileName)
-	fileName := SecretFolder + fmt.Sprintf("%v.%v", jwk.Kid, "settings.json")
-	fileData := SecretFolder + fmt.Sprintf("%v.%v", jwk.Kid, "data")
+func ejectSecretKeyHolder(jwkFileName string, holder []byte) error {
+	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
+	if e != nil {
+		return e
+	}
+
+	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "settings.json")
+	fileData := fmt.Sprintf("%v.%v", jwk.Kid, "data")
 
 	createFileIfNonExists(fileName, holder)
 
-	errJwk := os.Remove(SecretFolder + jwkFileName)
-	utils.CheckError(errJwk)
+	e = os.Remove(jwkFileName)
+	if e != nil {
+		return e
+	}
 
-	errData := os.Remove(SecretFolder + fileData)
-	utils.CheckError(errData)
+	e = os.Remove(fileData)
+	if e != nil {
+		return e
+	}
+
+	return nil
 }
 
-func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) map[string]SecretKey {
-	holder := getSecretKeysHolder(jwkFileName)
+func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) (map[string]SecretKey, error) {
+	holder, e := getSecretKeysHolder(jwkFileName)
+	if e != nil {
+		return nil, e
+	}
+
 	list := append(holder.Items, fallbackSecret)
 
 	m := map[string]SecretKey{}
@@ -88,30 +126,36 @@ func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) map[stri
 		m[s.Key] = s
 	}
 
-	return m
+	return m, nil
 }
 
-func getSecretKeysHolder(jwkFileName string) Holder {
-	jwk := keys.JwkFromJsonFilePath(jwkFileName)
+func getSecretKeysHolder(jwkFileName string) (Holder,error) {
+	jwk, e:= keys.JwkFromJsonFilePath(jwkFileName)
+	if e != nil {
+		return Holder{}, e
+	}
 
-	fileName := SecretFolder + fmt.Sprintf("%v.%v", jwk.Kid, "data")
+	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "data")
 	if !fileExists(fileName) {
-		return Holder{Items: []SecretKey{}}
+		return Holder{Items: []SecretKey{}}, nil
 	}
 
 	file, err := os.Open(fileName)
-	utils.CheckError(err)
+	if err != nil {
+		return Holder{}, err
+	}
+
 	defer file.Close()
 
 	list := parseFileToSecretKeyArray(file)
-	return Holder{Items: list}
+	return Holder{Items: list}, nil
 }
 
 func parseFileToSecretKeyArray(file *os.File) []SecretKey {
 	var list []SecretKey
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		secret := parseBytesToSecret(scanner.Bytes())
+		secret, _:= parseBytesToSecret(scanner.Bytes())
 		list = append(list, secret)
 	}
 
@@ -122,42 +166,31 @@ func parseFileToSecretKeyArray(file *os.File) []SecretKey {
 	return list
 }
 
-func parseBytesToSecret(bytes []byte) SecretKey {
+func parseBytesToSecret(bytes []byte) (SecretKey,error) {
 	var secret SecretKey
 	err := json.Unmarshal(bytes, &secret)
-	utils.CheckError(err)
-	return secret
+	return secret, err
 }
 
-func parseSecretToByteArray(key SecretKey) []byte {
-	json, err := json.Marshal(&key)
-	utils.CheckError(err)
-	return json
+func parseSecretToByteArray(key SecretKey) ([]byte, error) {
+	return json.Marshal(&key)
 }
 
-func prepareRegister(jwk keys.Jwk, key string, value string) SecretKey {
-	publicKey := keys.LoadPublicKey(jwk)
+func prepareRegister(jwk keys.Jwk, key string, value string) (SecretKey,error) {
+	publicKey, err:= keys.LoadPublicKey(jwk)
+	if err != nil {
+		return SecretKey{}, err
+	}
+
 	encryptWithPublicKey := rsa.EncryptWithPublicKey([]byte(value), publicKey)
 	encodeToString := base64.StdEncoding.EncodeToString(encryptWithPublicKey)
 
-	return SecretKey{Key: key, Value: encodeToString}
+	return SecretKey{Key: key, Value: encodeToString}, nil
 }
 
-func createFileIfNonExists(fileName string, content []byte) {
+func createFileIfNonExists(fileName string, content []byte) error {
 	data := []byte(string(content) + "\n")
-	e := ioutil.WriteFile(SecretFolder+fileName, data, os.FileMode.Perm(0644))
-	utils.CheckError(e)
-}
-
-func createDirectoryIfNonExists() {
-	_, err := os.Stat(SecretFolder)
-
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll("secrets", 0755)
-		if errDir != nil {
-			log.Fatal(err)
-		}
-	}
+	return ioutil.WriteFile(fileName, data, os.FileMode.Perm(0644))
 }
 
 func fileExists(path string) bool {

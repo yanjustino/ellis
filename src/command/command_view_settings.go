@@ -2,7 +2,6 @@ package command
 
 import (
 	"ellis.io/data"
-	"ellis.io/utils"
 	"regexp"
 	"strings"
 )
@@ -16,14 +15,24 @@ func (args ViewSecretsArgs) CanExecute() bool {
 
 	input := strings.Join(param, " ")
 	ok, err := regexp.MatchString("view\\s-k\\s[\\w](.|\\/)*", input)
-	utils.CheckError(err)
+	if err != nil {
+		println(err.Error())
+		return false
+	}
 
 	return ok
 }
 
-func (args ViewSecretsArgs) Execute() {
-	if args.CanExecute() {
-		param := args.Args[1:]
-		data.FetchSecretKeysHolder(param[2], false)
+func (args ViewSecretsArgs) Execute() (bool, error) {
+	if !args.CanExecute() {
+		return false, nil
 	}
+
+	param := args.Args[1:]
+	e := data.FetchSecretKeysHolder(param[2], false)
+	if e != nil {
+		println(e.Error())
+		return false, e
+	}
+	return true, nil
 }

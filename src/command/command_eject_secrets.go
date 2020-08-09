@@ -1,9 +1,7 @@
 package command
 
-
 import (
 	"ellis.io/data"
-	"ellis.io/utils"
 	"regexp"
 	"strings"
 )
@@ -18,19 +16,29 @@ func (args EjectSecretsArgs) CanExecute() bool {
 
 	input := strings.Join(param, " ")
 	ok, err := regexp.MatchString("eject\\s-k\\s[\\w](.|\\/)*", input)
-	utils.CheckError(err)
+	if err != nil {
+		println(err.Error())
+		return false
+	}
 
 	return ok && len(param) == 3
 }
 
-func (args EjectSecretsArgs) Execute() {
-	if args.CanExecute() {
-		param := args.Args[1:]
-		data.FetchSecretKeysHolder(param[2], true)
-		args.AfterExecute()
+func (args EjectSecretsArgs) Execute() (bool, error) {
+	if !args.CanExecute() {
+		return false, nil
 	}
+
+	param := args.Args[1:]
+	e := data.FetchSecretKeysHolder(param[2], true)
+	if e != nil {
+		println(e.Error())
+		return false, e
+	}
+	args.AfterExecute()
+	return true, nil
 }
 
-func (args EjectSecretsArgs) AfterExecute()  {
+func (args EjectSecretsArgs) AfterExecute() {
 	println("The keys were ejected!")
 }

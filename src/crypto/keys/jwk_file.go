@@ -23,27 +23,31 @@ func NewJwk(mod string, name string) Jwk {
 	}
 }
 
-func JwkToJson(jwk Jwk) string {
-
+func JwkToJson(jwk Jwk) (string, error) {
 	b, err := json.Marshal(jwk)
 
 	if err != nil {
-		checkError(err)
+		return "", err
 	}
 
-	return string(b)
+	return string(b), nil
 }
 
-func JwkFromJsonFilePath(filename string) Jwk {
+func JwkFromJsonFilePath(filename string) (Jwk,error) {
 	value, err := ioutil.ReadFile(filename)
-	checkError(err)
+	if err != nil{
+		return Jwk{}, err
+	}
 	return JwkFromJsonByteArray(value)
 }
 
-func JwkFromJsonByteArray(value []byte) Jwk {
+func JwkFromJsonByteArray(value []byte) (Jwk,error) {
 	var result Jwk
-	err2 := json.Unmarshal(value, &result)
-	checkError(err2)
 
-	return result
+	err := json.Unmarshal(value, &result)
+	if err != nil{
+		return Jwk{}, err
+	}
+
+	return result, nil
 }
