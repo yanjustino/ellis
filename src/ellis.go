@@ -10,4 +10,5 @@ func main() {
 	command.SetSecretArgs{Args: os.Args}.Execute()
 	command.ListSecretsArgs{Args: os.Args}.Execute()
 	command.ViewSecretsArgs{Args: os.Args}.Execute()
+	command.EjectSecretsArgs{Args: os.Args}.Execute()
 }

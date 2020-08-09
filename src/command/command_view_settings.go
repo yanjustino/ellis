@@ -2,6 +2,9 @@ package command
 
 import (
 	"ellis.io/data"
+	"ellis.io/utils"
+	"regexp"
+	"strings"
 )
 
 type ViewSecretsArgs struct {
@@ -10,13 +13,17 @@ type ViewSecretsArgs struct {
 
 func (args ViewSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
-	return len(param) == 3 && param[0] == "view" && param[1] == "-k" && param[2] != ""
+
+	input := strings.Join(param, " ")
+	ok, err := regexp.MatchString("view\\s-k\\s[\\w](.|\\/)*", input)
+	utils.CheckError(err)
+
+	return ok
 }
 
 func (args ViewSecretsArgs) Execute() {
 	if args.CanExecute() {
 		param := args.Args[1:]
-
-		data.FetchSecretKeysHolder(param[2])
+		data.FetchSecretKeysHolder(param[2], false)
 	}
 }

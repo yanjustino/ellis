@@ -23,9 +23,9 @@ func NewJwk(mod string, name string) Jwk {
 	}
 }
 
-func JwkToJson(file Jwk) string {
+func JwkToJson(jwk Jwk) string {
 
-	b, err := json.Marshal(file)
+	b, err := json.Marshal(jwk)
 
 	if err != nil {
 		checkError(err)
@@ -34,10 +34,13 @@ func JwkToJson(file Jwk) string {
 	return string(b)
 }
 
-func JwkFromJson(filename string) Jwk {
+func JwkFromJsonFilePath(filename string) Jwk {
 	value, err := ioutil.ReadFile(filename)
 	checkError(err)
+	return JwkFromJsonByteArray(value)
+}
 
+func JwkFromJsonByteArray(value []byte) Jwk {
 	var result Jwk
 	err2 := json.Unmarshal(value, &result)
 	checkError(err2)
