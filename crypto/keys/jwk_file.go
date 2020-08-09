@@ -3,6 +3,8 @@ package keys
 import (
 	"encoding/json"
 	"github.com/google/uuid"
+	"io/ioutil"
+	"strings"
 )
 
 type Jwk struct {
@@ -16,18 +18,29 @@ func NewJwk(mod string, name string) Jwk {
 	return Jwk{
 		Alg: "RSA",
 		Mod: mod,
-		Exp: name,
-		Kid: uuid.New().String(),
+		Exp: strings.Replace(uuid.New().String(), "-", "", -1),
+		Kid: name,
 	}
 }
 
 func JwkToJson(file Jwk) string {
 
-	b, err := json.MarshalIndent(file, "", " ")
+	b, err := json.Marshal(file)
 
 	if err != nil {
 		checkError(err)
 	}
 
 	return string(b)
+}
+
+func JwkFromJson(filename string) Jwk {
+	value, err := ioutil.ReadFile(filename)
+	checkError(err)
+
+	var result Jwk
+	err2 := json.Unmarshal(value, &result)
+	checkError(err2)
+
+	return result
 }

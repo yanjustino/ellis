@@ -10,12 +10,19 @@ import (
 )
 
 func WriteKeys(name string) {
-	private, public := rsa.GenerateKeyPair(1024)
-	SavePrivateKey(private, name)
-	SavePublicKey(public, name)
+	private, public := rsa.GenerateKeyPair()
+	savePrivateKey(private, name)
+	savePublicKey(public, name)
 }
 
-func SavePrivateKey(key *key.PrivateKey, name string) {
+func LoadPublicKey(jwk Jwk) *key.PublicKey {
+	toByte, err := b64.RawURLEncoding.DecodeString(jwk.Mod)
+	checkError(err)
+
+	return rsa.BytesToPublicKey(toByte)
+}
+
+func savePrivateKey(key *key.PrivateKey, name string) {
 	bytes := rsa.PrivateKeyToBytes(key)
 	bytesToString := b64.StdEncoding.EncodeToString(bytes)
 
@@ -30,7 +37,7 @@ func SavePrivateKey(key *key.PrivateKey, name string) {
 	}
 }
 
-func SavePublicKey(key *key.PublicKey, name string) {
+func savePublicKey(key *key.PublicKey, name string) {
 	keyToBytes := rsa.PublicKeyToBytes(key)
 	bytesToString := b64.RawURLEncoding.EncodeToString(keyToBytes)
 

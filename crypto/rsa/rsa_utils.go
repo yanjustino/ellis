@@ -15,8 +15,9 @@ import (
 	"os"
 )
 
-func GenerateKeyPair(bits int) (*rsa.PrivateKey, *rsa.PublicKey) {
-	privies, err := rsa.GenerateKey(rand.Reader, bits)
+func GenerateKeyPair() (*rsa.PrivateKey, *rsa.PublicKey) {
+	bitSize := 2048
+	privies, err := rsa.GenerateKey(rand.Reader, bitSize)
 	if err != nil {
 		checkError(err)
 	}
