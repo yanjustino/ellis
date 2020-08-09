@@ -1,4 +1,4 @@
-<p align="center">
+<p align="right">
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
