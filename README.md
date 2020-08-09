@@ -1,5 +1,6 @@
-
-![ellis](https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png)
+<p align="center">
+  <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
+</p>
 
 
 # :unlock: James H. Ellis 
