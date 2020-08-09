@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b84b5e1b-7437-4a2a-b159-5baa54c50147" name="Default Changelist" comment="first command" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="C:\Users\Yan Justino\go\go1.14.7" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1foYtEPCx7y9yZ3XApvpfoOLScS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist" />
+  </component>
+  <component name="RunManager" selected="Go Build.go build ellis.io">
+    <configuration name="go build ellis.io" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <working_directory value="$PROJECT_DIR$" />
+      <parameters value="view -k s625.json" />
+      <kind value="PACKAGE" />
+      <package value="ellis.io" />
+      <directory value="$PROJECT_DIR$" />
+      <output_directory value="$PROJECT_DIR$/dist" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build key_files.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ellis" />
+      <working_directory value="$PROJECT_DIR$/crypto/keys" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/crypto/keys/key_files.go" />
+      <package value="ellis" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build ellis.io" />
+      <item itemvalue="Go Build.go build key_files.go" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build key_files.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b84b5e1b-7437-4a2a-b159-5baa54c50147" name="Default Changelist" comment="" />
+      <created>1596886124260</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596886124260</updated>
+    </task>
+    <task id="LOCAL-00001" summary="ignore">
+      <created>1596894371946</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596894371946</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ignore">
+      <created>1596894879895</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596894879895</updated>
+    </task>
+    <task id="LOCAL-00003" summary="first command">
+      <created>1596906202968</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596906202968</updated>
+    </task>
+    <task id="LOCAL-00004" summary="rsa + json view">
+      <created>1596941947921</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596941947921</updated>
+    </task>
+    <task id="LOCAL-00005" summary="rsa + json view">
+      <created>1596942657654</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596942657654</updated>
+    </task>
+    <task id="LOCAL-00006" summary="rsa + json view">
+      <created>1596944216535</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596944216535</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ignore" />
+    <MESSAGE value="first command" />
+    <MESSAGE value="rsa + json view" />
+    <option name="LAST_COMMIT_MESSAGE" value="rsa + json view" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="586" y="198" key="#Inspections" timestamp="1596913450576">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1596913450576" />
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596975348045">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596975348045" />
+    <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596940788879">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596940788879" />
+    <state x="715" y="223" key="#xdebugger.evaluate" timestamp="1596897355137">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="223" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1596897355137" />
+    <state width="695" height="466" key="DebuggerActiveHint" timestamp="1596930818989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="695" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1596930818989" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1596975324963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596975324963" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1596974961511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961511" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1596974961511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961511" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1596974961511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961511" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1596974961511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961511" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1596974961505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961505" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1596974961505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961505" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1596974961505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961505" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1596974961505">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596974961505" />
+    <state x="732" y="222" key="RollbackChangesDialog" timestamp="1596894955673">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="732" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596894955673" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1596944220487">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1596944220487" />
+    <state width="749" height="526" key="XDebugger.FullValuePopup" timestamp="1596930818980">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="749" height="526" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1596930818980" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596938406540">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596938406540" />
+    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1596893825351">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596893825351" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/crypto/keys/key_files.go</url>
+          <line>40</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
