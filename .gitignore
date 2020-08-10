@@ -13,4 +13,8 @@
 
 # Dependency directories (remove the comment below to include it)
  vendor/
-/.idea/
+.idea/
+tests/*.json
+tests/*.data
+tests/*.key
+
