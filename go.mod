@@ -4,6 +4,7 @@ go 1.14
 
 require (
 	ellis.com/command v0.0.0
+	ellis.com/tests v0.0.0
 )
 
 replace (
