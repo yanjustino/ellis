@@ -14,7 +14,7 @@ Ellis is a encrypted secrets builder. It uses de concept of **public-key cryptog
 
 ## Lifecycle
 <p align="center">
-  <img height="650" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+  <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
 </p>
 
 # Who was James H. Ellis 
