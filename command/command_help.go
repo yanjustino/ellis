@@ -51,6 +51,11 @@ func Helptext() string {
 		"   eject [-k] [path-to-jwk] \n" +
 		" \n" +
 		"path-to-jwk:\n" +
-		" 	The path to an application JWK file to execute.\n"
-
+		" 	The path to an application JWK file to execute.\n" +
+		" \n" +
+		"about:\n" +
+		"	https://github.com/yanjustino/ellis\n" +
+		"	MIT License\n" +
+		"	Data: 05/08/2020\n" +
+		"	Copyright (c) 2020 Yan Justino\n"
 }
