@@ -2,8 +2,51 @@
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
-# What is Ellis
-Production secrets shouldn't be used for development or test. Secrets shouldn't be deployed with the app
 
-# :unlock: Who was James H. Ellis 
+# About ELLIS
+Ellis is a encrypted secrets builder. It uses de concept of public-key cryptography to produces settings file with this secrets.  See how ellis do it:
+
+## Lifecycle
+<p align="center">
+  <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+</p>
+
+## Usage
+```shell
+ Usage: ellis <command> [options] [path-to-jwk]
+ Usage: ellis [path-to-jwk]
+ 
+ * command:
+   * help  Display help 
+   * keys  Generate a pair of RSA Keys (The public key is generated in JWK format) 
+   * list  List all secrets for JWK file 
+   * view  Preview the settings file 
+   * set   Store a key-value pair 
+   * eject Generate a settings file 
+ 
+ * command [options]:
+   * help  [-h] 
+   * keys  [-g] [jwk-id] 
+   * list  [-k] [path-to-jwk] 
+   * view  [-k] [path-to-jwk] 
+   * set   [-k] [path-to-jwk] [key] [value]
+   * eject [-k] [path-to-jwk] 
+ 
+* path-to-jwk:
+ 	* The path to an application JWK file to execute.
+  ```
+  
+# Troble storing secrets
+Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
+
 James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**.
+
+He had a simple but clever idea: Closing and opening are inverse operations. In that sense "Alice" (:girl: :key: :unlock:) could open a lock and keep the key and send the open lock to "Bob". Bob (:boy: :lock: :email:) closes his message and sends it back to Alice (:girl: :key: :unlock: :email:). No keys are exchanged. This means that she (:girl: :unlock: :unlock: :unlock: :unlock:) could publish the padlock widely and allow any person to send a message, having to keep track of only one key.
+  
+
+# Who was James H. Ellis 
+James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**.
+
+
+# References
+* [RSA encryptation](https://www.khanacademy.org/computing/computer-science/cryptography/modern-crypt/v/intro-to-rsa-encryption)
