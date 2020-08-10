@@ -33,19 +33,19 @@ func JwkToJson(jwk Jwk) (string, error) {
 	return string(b), nil
 }
 
-func JwkFromJsonFilePath(filename string) (Jwk,error) {
+func JwkFromJsonFilePath(filename string) (Jwk, error) {
 	value, err := ioutil.ReadFile(filename)
-	if err != nil{
+	if err != nil {
 		return Jwk{}, err
 	}
 	return JwkFromJsonByteArray(value)
 }
 
-func JwkFromJsonByteArray(value []byte) (Jwk,error) {
+func JwkFromJsonByteArray(value []byte) (Jwk, error) {
 	var result Jwk
 
 	err := json.Unmarshal(value, &result)
-	if err != nil{
+	if err != nil {
 		return Jwk{}, err
 	}
 
