@@ -2,7 +2,7 @@ package keys
 
 import (
 	key "crypto/rsa"
-	"ellis.io/crypto/rsa"
+	"ellis.com/crypto/rsa"
 	b64 "encoding/base64"
 	"fmt"
 	"io/ioutil"

@@ -1,7 +1,7 @@
 package command
 
 import (
-	"ellis.io/data"
+	"ellis.com/data"
 	"regexp"
 	"strings"
 )

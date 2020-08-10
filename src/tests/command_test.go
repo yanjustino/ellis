@@ -1,13 +1,13 @@
 package tests
 
 import (
-	"ellis.io/command"
+	"ellis.com/command"
 	"os"
 	"strings"
 	"testing"
 )
 
-func TestAllCommands(t *testing.T)  {
+func TestAllCommands(t *testing.T) {
 	cleanAll()
 	generateKeys(t)
 	listKeys(t)
@@ -65,7 +65,7 @@ func setKeys(t *testing.T) {
 
 }
 
-func listKeys(t *testing.T)  {
+func listKeys(t *testing.T) {
 	cmd := command.ListSecretsArgs{Args: []string{"ellis", "list", "-k", "project.json"}}
 	if !cmd.CanExecute() {
 		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
@@ -77,7 +77,7 @@ func listKeys(t *testing.T)  {
 	}
 }
 
-func viewKeys(t *testing.T)  {
+func viewKeys(t *testing.T) {
 	cmd := command.ViewSecretsArgs{Args: []string{"ellis", "view", "-k", "project.json"}}
 	if !cmd.CanExecute() {
 		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
@@ -89,7 +89,7 @@ func viewKeys(t *testing.T)  {
 	}
 }
 
-func ejectSecret(t *testing.T)  {
+func ejectSecret(t *testing.T) {
 	cmd := command.EjectSecretsArgs{Args: []string{"ellis", "eject", "-k", "project.json"}}
 	if !cmd.CanExecute() {
 		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
@@ -101,7 +101,7 @@ func ejectSecret(t *testing.T)  {
 		return
 	}
 
-	if !fileExists("project.settings.json"){
+	if !fileExists("project.settings.json") {
 		t.Errorf("Fail: project.settings.json was not CREATED")
 	}
 }

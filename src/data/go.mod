@@ -1,16 +1,16 @@
-module ellis.io/data
+module ellis.com/data
 
 go 1.14
 
 replace (
-	ellis.io/data v0.0.0 => ./
-	ellis.io/crypto/rsa v0.0.0 => ../crypto/rsa
-	ellis.io/crypto/keys v0.0.0 => ../crypto/keys
+	ellis.com/data v0.0.0 => ./
+	ellis.com/crypto/rsa v0.0.0 => ../crypto/rsa
+	ellis.com/crypto/keys v0.0.0 => ../crypto/keys
 )
 
 require (
-	ellis.io/crypto/rsa v0.0.0
-	ellis.io/crypto/keys v0.0.0
+	ellis.com/crypto/rsa v0.0.0
+	ellis.com/crypto/keys v0.0.0
 )
 
 

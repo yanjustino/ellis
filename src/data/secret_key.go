@@ -2,8 +2,8 @@ package data
 
 import (
 	"bufio"
-	"ellis.io/crypto/keys"
-	"ellis.io/crypto/rsa"
+	"ellis.com/crypto/keys"
+	"ellis.com/crypto/rsa"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -24,28 +24,28 @@ type Holder struct {
 
 func StoreSecretKey(jwkFileName string, key string, value string) error {
 	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
-	if e != nil{
+	if e != nil {
 		return e
 	}
 
-	new, e := prepareRegister(jwk, key, value)
-	if e != nil{
+	register, e := prepareRegister(jwk, key, value)
+	if e != nil {
 		return e
 	}
 
-	mps, e := groupSecretKeysByKey(jwkFileName, new)
-	if e != nil{
+	mps, e := groupSecretKeysByKey(jwkFileName, register)
+	if e != nil {
 		return e
 	}
 
 	var values []string
 	for _, v := range mps {
-		json, e:= parseSecretToByteArray(v)
-		if e != nil{
+		toByteArray, e := parseSecretToByteArray(v)
+		if e != nil {
 			return e
 		}
 
-		values = append(values, string(json))
+		values = append(values, string(toByteArray))
 	}
 
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "data")
@@ -68,7 +68,7 @@ func FetchAllSecretKeys(jwkFileName string) error {
 	return nil
 }
 
-func FetchSecretKeysHolder(jwkFileName string, eject bool) error{
+func FetchSecretKeysHolder(jwkFileName string, eject bool) error {
 	holder, e := getSecretKeysHolder(jwkFileName)
 	if e != nil {
 		return e
@@ -127,8 +127,8 @@ func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) (map[str
 	return m, nil
 }
 
-func getSecretKeysHolder(jwkFileName string) (Holder,error) {
-	jwk, e:= keys.JwkFromJsonFilePath(jwkFileName)
+func getSecretKeysHolder(jwkFileName string) (Holder, error) {
+	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
 	if e != nil {
 		return Holder{}, e
 	}
@@ -153,7 +153,7 @@ func parseFileToSecretKeyArray(file *os.File) []SecretKey {
 	var list []SecretKey
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		secret, _:= parseBytesToSecret(scanner.Bytes())
+		secret, _ := parseBytesToSecret(scanner.Bytes())
 		list = append(list, secret)
 	}
 
@@ -164,7 +164,7 @@ func parseFileToSecretKeyArray(file *os.File) []SecretKey {
 	return list
 }
 
-func parseBytesToSecret(bytes []byte) (SecretKey,error) {
+func parseBytesToSecret(bytes []byte) (SecretKey, error) {
 	var secret SecretKey
 	err := json.Unmarshal(bytes, &secret)
 	return secret, err
@@ -174,8 +174,8 @@ func parseSecretToByteArray(key SecretKey) ([]byte, error) {
 	return json.Marshal(&key)
 }
 
-func prepareRegister(jwk keys.Jwk, key string, value string) (SecretKey,error) {
-	publicKey, err:= keys.LoadPublicKey(jwk)
+func prepareRegister(jwk keys.Jwk, key string, value string) (SecretKey, error) {
+	publicKey, err := keys.LoadPublicKey(jwk)
 	if err != nil {
 		return SecretKey{}, err
 	}

@@ -24,7 +24,7 @@ SOFTWARE.
 package main
 
 import (
-	"ellis.io/command"
+	"ellis.com/command"
 	"os"
 )
 

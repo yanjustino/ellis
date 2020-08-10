@@ -1,7 +1,7 @@
 package command
 
 import (
-	"ellis.io/crypto/keys"
+	"ellis.com/crypto/keys"
 	"regexp"
 	"strings"
 )
