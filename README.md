@@ -2,14 +2,15 @@
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
+Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
 
 # About ELLIS
-Ellis is a encrypted secrets builder. It uses de concept of public-key cryptography to produces settings file with this secrets.  See how ellis do it:
+Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data json file to using in application settings file in distincts environment. See how ellis do it:
 
 ## Lifecycle
 <p align="center">
+  <label><strong>Figure 1.</strong> The ellis lifecycle</label>
   <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
-  <p><label>Figure 1. The ellis lifecycle</label></p>
 </p>
 
 The Figure 1 illustrates the following steps and their respective commands:
@@ -39,9 +40,6 @@ Alson, Bob can view a preview result of final settings file (Secrets Holder) usi
 Then, Bob can generate this Json as a File using the command **`ellis eject -k {jwk-file-name}`** and send it to Alice, who can store and decrypt this file with his key. 
 These steps describe the ellis life cycle
 
-  
-# Troble storing secrets
-Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
 
 # Who was James H. Ellis 
 James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**.
