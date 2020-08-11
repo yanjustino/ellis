@@ -19,14 +19,14 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
   <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
 </p>
 
-The Person' (Alice :girl:) uses the command  **`ellis keys -g {jwk-file-name}`** to generate de key-pair. Alice Take the private key and sends the public key (JWK) to Person'' (Bob :boy:). Now Bob, with public key, can register secret keys using de command **`ellis set -k {jwk-file-name} [key] [value]`**. After that, Bob can list ther registerd keys with the command **`ellis list -k {jwk-file-name}`**. The result will be like this:
+The Person' (Alice :girl:) uses the command  **`ellis keys -g {jwk-file-path}`** to generate de key-pair. Alice Take the private key and sends the public key (JWK) to Person'' (Bob :boy:). Now Bob, with public key, can register secret keys using de command **`ellis set -k {jwk-file-path} [key] [value]`**. After that, Bob can list ther registerd keys with the command **`ellis list -k {jwk-file-path}`**. The result will be like this:
 
 ``` shell
 [0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
 [1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
 ```
 
-Alson, Bob can view a preview result of final settings file (Secrets Holder) using the command **`ellis view -k {jwk-file-name}`**
+Alson, Bob can view a preview result of final settings file (Secrets Holder) using the command **`ellis view -k {jwk-file-path}`**
 
 ``` json
 {
@@ -43,7 +43,7 @@ Alson, Bob can view a preview result of final settings file (Secrets Holder) usi
 }
 ```
 
-Then, Bob can generate this Json as a File using the command **`ellis eject -k {jwk-file-name}`** and send it to Alice, who can store and decrypt this file with his key. 
+Then, Bob can generate this Json as a File using the command **`ellis eject -k {jwk-file-path}`** and send it to Alice, who can store and decrypt this file with his key. 
 These steps describe the ellis life cycle
 
 # Who was James H. Ellis 
