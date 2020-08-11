@@ -52,4 +52,7 @@ James Henry Ellis (25 September 1924 – 25 November 1997) was a British enginee
 > Closing and opening are inverse operations. In that sense "Alice" (:girl: :key: :unlock:) could open a lock and keep the key and send the open lock to "Bob". Bob (:boy: :lock: :email:) closes his message and sends it back to Alice (:girl: :key: :unlock: :email:). No keys are exchanged. This means that she (:girl: :unlock: :unlock: :unlock: :unlock:) could publish the padlock widely and allow any person to send a message, having to keep track of only one key.
 
 # References
-* [RSA encryptation](https://www.khanacademy.org/computing/computer-science/cryptography/modern-crypt/v/intro-to-rsa-encryption)
+* [RSA encryptation](https://tools.ietf.org/html/rfc3447)
+* [JSON Web Key (JWK)](https://openid.net/specs/draft-jones-json-web-key-03.html)
+* [Safe storage of app secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
+
