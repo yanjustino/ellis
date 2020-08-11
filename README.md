@@ -1,3 +1,5 @@
+[![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
+
 <p align="right">
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
