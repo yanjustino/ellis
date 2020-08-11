@@ -1,3 +1,4 @@
+![Travis (.org)](https://img.shields.io/travis/yanjustino/ellis)
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yanjustino/ellis)
 ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/yanjustino/ellis)
