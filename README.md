@@ -9,32 +9,36 @@ Ellis is a encrypted secrets builder. It uses de concept of public-key cryptogra
 ## Lifecycle
 <p align="center">
   <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+  <label>Figure 1. The ellis lifecycle</label>
 </p>
 
-## Usage
-```shell
- Usage: ellis <command> [options] [path-to-jwk]
- Usage: ellis [path-to-jwk]
- 
- * command:
-   * help  Display help 
-   * keys  Generate a pair of RSA Keys (The public key is generated in JWK format) 
-   * list  List all secrets for JWK file 
-   * view  Preview the settings file 
-   * set   Store a key-value pair 
-   * eject Generate a settings file 
- 
- * command [options]:
-   * help  [-h] 
-   * keys  [-g] [jwk-id] 
-   * list  [-k] [path-to-jwk] 
-   * view  [-k] [path-to-jwk] 
-   * set   [-k] [path-to-jwk] [key] [value]
-   * eject [-k] [path-to-jwk] 
- 
-* path-to-jwk:
- 	* The path to an application JWK file to execute.
-  ```
+The Figure 1 illustrates the following steps and their respective commands:
+
+The Person' (Alice :girl:) uses the command  **`ellis keys -g {jwk-file-name}`** to generate de key-pair. Alice Take the private key and sends the public key (JWK) to Person'' (Bob :boy:). Now Bob, with public key, can register secret keys using de command **`ellis set -k {jwk-file-name} [key] [value]`**. After that, Bob can list ther registerd keys with the command **`ellis list -k {jwk-file-name}`**. The result will be like this:
+
+```
+[0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
+[1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
+```
+Alson, Bob can view a preview result of final settings file (Secrets Holder) using the command `ellis view -k {jwk-file-name}` :
+
+```
+{
+ "Items": [
+  {
+   "key": "keyA",
+   "value": "DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3Mm6iGbJB..."
+  },
+  {
+   "key": "keyB",
+   "value": "eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3SsTbYXgy..."
+  }
+ ]
+}
+```
+Then, Bob can generate this Json as a File using the command **`ellis eject -k {jwk-file-name}`** and send it to Alice, who can store and decrypt this file with his key. 
+These steps describe the ellis life cycle
+
   
 # Troble storing secrets
 Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
