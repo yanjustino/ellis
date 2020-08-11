@@ -96,19 +96,8 @@ func ejectSecretKeyHolder(jwkFileName string, holder []byte) error {
 	}
 
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "settings.json")
-	//fileData := fmt.Sprintf("%v.%v", jwk.Kid, "data")
 
 	return createFileIfNonExists(fileName, holder)
-
-	//e = os.Remove(jwkFileName)
-	//if e != nil {
-	//	return e
-	//}
-	//
-	//e = os.Remove(fileData)
-	//if e != nil {
-	//	return e
-	//}
 }
 
 func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) (map[string]SecretKey, error) {
