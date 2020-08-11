@@ -10,12 +10,16 @@ type ListSecretsArgs struct {
 	Args []string
 }
 
+func (args ListSecretsArgs) AfterExecute() {
+	panic("implement me")
+}
+
 /* list -k {{file}} */
 func (args ListSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("list\\s-k\\s[\\w](.|\\/)*", input)
+	ok, err := regexp.MatchString("list\\s-k\\s[\\w](.|/)*", input)
 	if err != nil {
 		println(err.Error())
 		return false

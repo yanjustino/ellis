@@ -14,7 +14,7 @@ func (args ViewSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("view\\s-k\\s[\\w](.|\\/)*", input)
+	ok, err := regexp.MatchString("view\\s-k\\s[\\w](.|/)*", input)
 	if err != nil {
 		println(err.Error())
 		return false
@@ -35,4 +35,8 @@ func (args ViewSecretsArgs) Execute() (bool, error) {
 		return false, e
 	}
 	return true, nil
+}
+
+func (args ViewSecretsArgs) AfterExecute() {
+	panic("implement me")
 }

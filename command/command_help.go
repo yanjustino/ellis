@@ -59,3 +59,7 @@ func Helptext() string {
 		"	Data: 05/08/2020\n" +
 		"	Copyright (c) 2020 Yan Justino\n"
 }
+
+func (args HelpArgs) AfterExecute() {
+	panic("implement me")
+}

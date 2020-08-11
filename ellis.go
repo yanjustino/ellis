@@ -29,13 +29,7 @@ import (
 )
 
 func main() {
-	var e error
-	_, e = command.KeyGenerateArgs{Args: os.Args}.Execute()
-	_, e = command.SetSecretArgs{Args: os.Args}.Execute()
-	_, e = command.ListSecretsArgs{Args: os.Args}.Execute()
-	_, e = command.ViewSecretsArgs{Args: os.Args}.Execute()
-	_, e = command.EjectSecretsArgs{Args: os.Args}.Execute()
-	_, e = command.HelpArgs{Args: os.Args}.Execute()
+	_, e := command.Builder(os.Args).Execute()
 
 	if e != nil {
 		println(e.Error())
