@@ -1,4 +1,6 @@
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
+![GitHub last commit](https://img.shields.io/github/last-commit/yanjustino/ellis)
+![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/yanjustino/ellis)
 
 <p align="right">
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
