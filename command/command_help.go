@@ -44,11 +44,11 @@ func Helptext() string {
 		"   keys  [-g] [jwk-id] \n" +
 		"   list  [-k] [path-to-jwk] \n" +
 		"   view  [-k] [path-to-jwk] \n" +
-		"   set   [-k] [path-to-jwk] \"[key]\" \"[value]\" (eg. bss set -k key.json \"MY_KEY\" \"$4564%*&3@#\")\n" +
+		"   set   [-k] [path-to-jwk] \"[key]\" \"[value]\" (eg. ellis set -k key.json \"MY_KEY\" \"$4564%*&3@#\")\n" +
 		"   eject [-k] [path-to-jwk] \n" +
 		" \n" +
 		"path-to-jwk:\n" +
-		" 	The path to an application JWK file to execute.\n" +
+		" 	The path to JWK file to execute.\n" +
 		" \n" +
 		"about:\n" +
 		"	https://github.com/yanjustino/ellis\n" +
