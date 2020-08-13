@@ -46,6 +46,32 @@ Alson, Bob can view a preview result of final settings file (Secrets Holder) usi
 Then, Bob can generate this Json as a File using the command **`ellis eject -k {jwk-file-path}`** and send it to Alice, who can store and decrypt this file with his key. 
 These steps describe the ellis life cycle
 
+# Usage
+
+```PowerShell
+ Usage: ellis <command> [options] [path-to-jwk]
+ Usage: ellis [path-to-jwk]
+ 
+ command:
+   help  Display help 
+   keys  Generate RSA Keys (The public key is generated in JWK format) 
+   list  List all secrets for JWK file 
+   view  Preview the settings file 
+   set   Store a key (only A-Z and "standard" digits) and value (in quotes) 
+   eject Generate a settings file 
+ 
+ command [options]:
+   help  [-h] 
+   keys  [-g] [jwk-id] 
+   list  [-k] [path-to-jwk] 
+   view  [-k] [path-to-jwk] 
+   set   [-k] [path-to-jwk] "[key]" "[value]" (eg. ellis set -k key.json "MY_KEY" "$4564%*&3@#")
+   eject [-k] [path-to-jwk] 
+ 
+path-to-jwk:
+ 	The path to JWK file to execute.
+```
+
 # Who was James H. Ellis 
 James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. He had a simple but clever idea: 
 
