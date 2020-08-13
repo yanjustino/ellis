@@ -12,13 +12,10 @@ func (args HelpArgs) CanExecute() bool {
 		param[0] == "help" || param[0] == "-h" || param[0] == "--h"
 }
 
-func (args HelpArgs) Execute() (bool, error) {
-	if !args.CanExecute() {
-		return false, nil
-	}
+func (args HelpArgs) Execute() bool {
 	println(AsciiBanner())
 	println(Helptext())
-	return true, nil
+	return true
 }
 
 func AsciiBanner() string {
@@ -39,7 +36,7 @@ func Helptext() string {
 		"   keys  Generate a pair of RSA Keys (The public key is generated in JWK format) \n" +
 		"   list  List all secrets for JWK file \n" +
 		"   view  Preview the settings file \n" +
-		"   set   Store a key-value pair \n" +
+		"   set   Store a key (only A-Z and \"standard\" digits) and value (in quotes) \n" +
 		"   eject Generate a settings file \n" +
 		" \n" +
 		" command [options]:\n" +
@@ -47,7 +44,7 @@ func Helptext() string {
 		"   keys  [-g] [jwk-id] \n" +
 		"   list  [-k] [path-to-jwk] \n" +
 		"   view  [-k] [path-to-jwk] \n" +
-		"   set   [-k] [path-to-jwk] [key] [value]\n" +
+		"   set   [-k] [path-to-jwk] \"[key]\" \"[value]\" (eg. bss set -k key.json \"MY_KEY\" \"$4564%*&3@#\")\n" +
 		"   eject [-k] [path-to-jwk] \n" +
 		" \n" +
 		"path-to-jwk:\n" +

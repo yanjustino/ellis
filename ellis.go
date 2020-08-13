@@ -29,9 +29,5 @@ import (
 )
 
 func main() {
-	_, e := command.Builder(os.Args).Execute()
-
-	if e != nil {
-		println(e.Error())
-	}
+	command.Builder(os.Args).Execute()
 }

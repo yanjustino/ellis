@@ -1,9 +1,9 @@
 package tests
 
 import (
+	"ellis.com/application"
 	"ellis.com/command"
 	"os"
-	"strings"
 	"testing"
 )
 
@@ -19,11 +19,7 @@ func TestAllCommands(t *testing.T) {
 
 func generateKeys(t *testing.T) {
 	cmd := command.KeyGenerateArgs{Args: []string{"ellis", "keys", "-g", "project"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ := cmd.Execute()
+	ok := cmd.Execute()
 
 	if !ok {
 		t.Errorf("Fail while generate keys")
@@ -39,22 +35,14 @@ func generateKeys(t *testing.T) {
 }
 
 func setKeys(t *testing.T) {
-	cmd := command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "keyA", "valueA"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ := cmd.Execute()
+	cmd := command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "USER", "Username"}}
+	ok := cmd.Execute()
 	if !ok {
 		t.Errorf("Fail when try set secret")
 	}
 
-	cmd = command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "keyB", "valueB"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ = cmd.Execute()
+	cmd = command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "PASS", "Server=myServerName\\myInstanceName;Database=myDataBase;User Id=myUsername;Password=myPassword;"}}
+	ok = cmd.Execute()
 	if !ok {
 		t.Errorf("Fail when try set secret")
 	}
@@ -67,11 +55,7 @@ func setKeys(t *testing.T) {
 
 func listKeys(t *testing.T) {
 	cmd := command.ListSecretsArgs{Args: []string{"ellis", "list", "-k", "project.json"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ := cmd.Execute()
+	ok := cmd.Execute()
 	if !ok {
 		t.Errorf("Fail when try set secret")
 	}
@@ -79,11 +63,7 @@ func listKeys(t *testing.T) {
 
 func viewKeys(t *testing.T) {
 	cmd := command.ViewSecretsArgs{Args: []string{"ellis", "view", "-k", "project.json"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ := cmd.Execute()
+	ok := cmd.Execute()
 	if !ok {
 		t.Errorf("Fail when try set secret")
 	}
@@ -91,11 +71,7 @@ func viewKeys(t *testing.T) {
 
 func ejectSecret(t *testing.T) {
 	cmd := command.EjectSecretsArgs{Args: []string{"ellis", "eject", "-k", "project.json"}}
-	if !cmd.CanExecute() {
-		t.Errorf("Invalid arguments [%v]", strings.Join(cmd.Args, " "))
-	}
-
-	ok, _ := cmd.Execute()
+	ok := cmd.Execute()
 	if !ok {
 		t.Errorf("Fail when try eject secret")
 		return
@@ -108,19 +84,19 @@ func ejectSecret(t *testing.T) {
 
 func cleanAll() {
 	if fileExists("project.key") {
-		os.Remove("project.key")
+		application.RemoveFile("project.key")
 	}
 
 	if fileExists("project.json") {
-		os.Remove("project.json")
+		application.RemoveFile("project.json")
 	}
 
 	if fileExists("project.data") {
-		os.Remove("project.data")
+		application.RemoveFile("project.data")
 	}
 
 	if fileExists("project.settings.json") {
-		os.Remove("project.settings.json")
+		application.RemoveFile("project.settings.json")
 	}
 }
 

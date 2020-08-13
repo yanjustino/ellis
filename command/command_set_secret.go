@@ -1,6 +1,7 @@
 package command
 
 import (
+	"ellis.com/application"
 	"ellis.com/data"
 	"fmt"
 	"regexp"
@@ -16,28 +17,17 @@ func (args SetSecretArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("set\\s-k\\s[\\w](.|\\/)*", input)
-	if err != nil {
-		println(err.Error())
-		return false
-	}
+	ok, err := regexp.MatchString("(set\\s-k)(\\s[\\w+/.]*)(\\s[\\w|\".*?\"]*)\\s((\\w+)|(\".*?\"))", input)
+	application.HandleError(err)
 
 	return ok && len(param) == 5
 }
 
-func (args SetSecretArgs) Execute() (bool, error) {
-	if !args.CanExecute() {
-		return false, nil
-	}
-
+func (args SetSecretArgs) Execute() bool {
 	param := args.Args[1:]
-	e := data.StoreSecretKey(param[2], param[3], param[4])
-	if e != nil {
-		println(e.Error())
-		return false, e
-	}
+	data.StoreSecretKey(param[2], param[3], param[4])
 	args.AfterExecute()
-	return true, nil
+	return true
 }
 
 func (args SetSecretArgs) AfterExecute() {

@@ -2,14 +2,12 @@ package data
 
 import (
 	"bufio"
+	"ellis.com/application"
 	"ellis.com/crypto/keys"
 	"ellis.com/crypto/rsa"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"os"
 	"strings"
 )
 
@@ -22,28 +20,15 @@ type Holder struct {
 	Items []SecretKey
 }
 
-func StoreSecretKey(jwkFileName string, key string, value string) error {
-	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
-	if e != nil {
-		return e
-	}
-
-	register, e := prepareRegister(jwk, key, value)
-	if e != nil {
-		return e
-	}
-
-	mps, e := groupSecretKeysByKey(jwkFileName, register)
-	if e != nil {
-		return e
-	}
+func StoreSecretKey(path string, key string, value string) {
+	jwk := keys.JsonToJwk(application.ReadFile(path))
+	secretKey := prepareRegister(jwk, key, value)
+	secretsByKey := groupSecretsByKey(path, secretKey)
 
 	var values []string
-	for _, v := range mps {
-		toByteArray, e := parseSecretToByteArray(v)
-		if e != nil {
-			return e
-		}
+	for _, v := range secretsByKey {
+		toByteArray, e := json.Marshal(v)
+		application.HandleError(e)
 
 		values = append(values, string(toByteArray))
 	}
@@ -51,139 +36,101 @@ func StoreSecretKey(jwkFileName string, key string, value string) error {
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "data")
 	content := strings.Join(values, "\n")
 
-	return createFileIfNonExists(fileName, []byte(content))
+	e := application.CreateFile(fileName, []byte(content))
+	application.HandleError(e)
 }
 
-func FetchAllSecretKeys(jwkFileName string) error {
-	holder, e := getSecretKeysHolder(jwkFileName)
-	if e != nil {
-		return e
-	}
+func FetchAllSecretKeys(jwkFileName string) {
+	holder := getSecretKeysHolder(jwkFileName)
 
 	for i, s := range holder.Items {
 		line := fmt.Sprintf("[%v] key: %v - value: %v", i, s.Key, s.Value)
 		fmt.Println(line)
 	}
-
-	return nil
 }
 
-func FetchSecretKeysHolder(jwkFileName string, eject bool) error {
-	holder, e := getSecretKeysHolder(jwkFileName)
-	if e != nil {
-		return e
-	}
+func FetchSecretKeysHolder(jwkFileName string, eject bool) {
+	holder := getSecretKeysHolder(jwkFileName)
 
 	result, e := json.MarshalIndent(&holder, "", " ")
-	if e != nil {
-		return e
-	}
+	application.HandleError(e)
 
 	if eject {
-		return ejectSecretKeyHolder(jwkFileName, result)
+		ejectSecretKeyHolder(jwkFileName, result)
 	} else {
 		println(string(result))
-		return nil
 	}
 }
 
 // PRIVATE SCOPE
 
-func ejectSecretKeyHolder(jwkFileName string, holder []byte) error {
-	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
-	if e != nil {
-		return e
-	}
+func ejectSecretKeyHolder(path string, holder []byte) {
+	data := application.ReadFile(path)
+	jwk := keys.JsonToJwk(data)
 
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "settings.json")
 
-	return createFileIfNonExists(fileName, holder)
+	e := application.CreateFile(fileName, holder)
+	application.HandleError(e)
 }
 
-func groupSecretKeysByKey(jwkFileName string, fallbackSecret SecretKey) (map[string]SecretKey, error) {
-	holder, e := getSecretKeysHolder(jwkFileName)
-	if e != nil {
-		return nil, e
+func groupSecretsByKey(jwkFileName string, defaultSecret SecretKey) map[string]SecretKey {
+	holder := getSecretKeysHolder(jwkFileName)
+
+	secretKeys := append(holder.Items, defaultSecret)
+	mappings := map[string]SecretKey{}
+
+	for _, s := range secretKeys {
+		mappings[s.Key] = s
 	}
 
-	list := append(holder.Items, fallbackSecret)
-
-	m := map[string]SecretKey{}
-	for _, s := range list {
-		m[s.Key] = s
-	}
-
-	return m, nil
+	return mappings
 }
 
-func getSecretKeysHolder(jwkFileName string) (Holder, error) {
-	jwk, e := keys.JwkFromJsonFilePath(jwkFileName)
-	if e != nil {
-		return Holder{}, e
-	}
+func getSecretKeysHolder(path string) Holder {
+	data := application.ReadFile(path)
+	jwk := keys.JsonToJwk(data)
 
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "data")
-	if !fileExists(fileName) {
-		return Holder{Items: []SecretKey{}}, nil
+	if !application.FileExists(fileName) {
+		return Holder{Items: []SecretKey{}}
 	}
 
-	file, err := os.Open(fileName)
-	if err != nil {
-		return Holder{}, err
-	}
-
-	defer file.Close()
-
-	list := parseFileToSecretKeyArray(file)
-	return Holder{Items: list}, nil
+	list := parseFileToSecretKeyArray(fileName)
+	return Holder{Items: list}
 }
 
-func parseFileToSecretKeyArray(file *os.File) []SecretKey {
+func parseFileToSecretKeyArray(path string) []SecretKey {
 	var list []SecretKey
+
+	file := application.OpenFile(path)
+	defer file.Close()
+
 	scanner := bufio.NewScanner(file)
+
 	for scanner.Scan() {
-		secret, _ := parseBytesToSecret(scanner.Bytes())
+		secret := parseBytesToSecret(scanner.Bytes())
 		list = append(list, secret)
 	}
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
+	e := scanner.Err()
+	application.HandleError(e)
 
 	return list
 }
 
-func parseBytesToSecret(bytes []byte) (SecretKey, error) {
+func parseBytesToSecret(bytes []byte) SecretKey {
 	var secret SecretKey
-	err := json.Unmarshal(bytes, &secret)
-	return secret, err
+	e := json.Unmarshal(bytes, &secret)
+	application.HandleError(e)
+	return secret
 }
 
-func parseSecretToByteArray(key SecretKey) ([]byte, error) {
-	return json.Marshal(&key)
-}
-
-func prepareRegister(jwk keys.Jwk, key string, value string) (SecretKey, error) {
-	publicKey, err := keys.LoadPublicKey(jwk)
-	if err != nil {
-		return SecretKey{}, err
-	}
+func prepareRegister(jwk keys.Jwk, key string, value string) SecretKey {
+	publicKey := keys.LoadPublicKey(jwk)
 
 	encryptWithPublicKey := rsa.EncryptWithPublicKey([]byte(value), publicKey)
 	encodeToString := base64.StdEncoding.EncodeToString(encryptWithPublicKey)
 
-	return SecretKey{Key: key, Value: encodeToString}, nil
-}
-
-func createFileIfNonExists(fileName string, content []byte) error {
-	data := []byte(string(content) + "\n")
-	return ioutil.WriteFile(fileName, data, os.FileMode.Perm(0644))
-}
-
-func fileExists(path string) bool {
-	info, err := os.Stat(path)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return !info.IsDir()
+	return SecretKey{Key: key, Value: encodeToString}
 }

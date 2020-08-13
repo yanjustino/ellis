@@ -15,7 +15,7 @@ func (args EjectSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("eject\\s-k\\s[\\w](.|\\/)*", input)
+	ok, err := regexp.MatchString("(eject\\s-k)(\\s[\\w+/.]*)", input)
 	if err != nil {
 		println(err.Error())
 		return false
@@ -24,19 +24,11 @@ func (args EjectSecretsArgs) CanExecute() bool {
 	return ok && len(param) == 3
 }
 
-func (args EjectSecretsArgs) Execute() (bool, error) {
-	if !args.CanExecute() {
-		return false, nil
-	}
-
+func (args EjectSecretsArgs) Execute() bool {
 	param := args.Args[1:]
-	e := data.FetchSecretKeysHolder(param[2], true)
-	if e != nil {
-		println(e.Error())
-		return false, e
-	}
+	data.FetchSecretKeysHolder(param[2], true)
 	args.AfterExecute()
-	return true, nil
+	return true
 }
 
 func (args EjectSecretsArgs) AfterExecute() {

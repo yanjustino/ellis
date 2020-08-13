@@ -1,7 +1,7 @@
 package command
 
 type Command interface {
-	Execute() (bool, error)
+	Execute() bool
 	CanExecute() bool
 	AfterExecute()
 }
