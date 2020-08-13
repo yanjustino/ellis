@@ -2,13 +2,15 @@
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
+
+
+Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
+
 ![Travis (.org)](https://img.shields.io/travis/yanjustino/ellis)
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
 ![GitHub repo size](https://img.shields.io/github/repo-size/yanjustino/ellis)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yanjustino/ellis)
 ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/yanjustino/ellis)
-
-Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
 
 # ELLIS
 Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data json file to using in application settings file in distincts environment. See how ellis do it:
