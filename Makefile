@@ -1,6 +1,6 @@
 # Name of the project
 # choco install make
-PROJECT_DIR := ${CURDIR}/dist
+PROJECT_DIR := ${CURDIR}/bin
 DIST_FOLDER=bin
 
 # go build command
