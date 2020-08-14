@@ -20,7 +20,7 @@ install:
 	@ echo "Compiling ellis"
 	@ $(GB) $(DIST_FOLDER)/ellis
 	@ echo $0
-	@ export PATH=$(PATH):$(PROJECT_DIR)
+	@ export PATH=$(PROJECT_DIR):$PATH
 	@ echo "Done!"
 
 .PHONY: install
