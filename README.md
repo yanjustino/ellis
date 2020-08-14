@@ -2,15 +2,13 @@
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
+Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data json (JWK) file to using in application settings file. See how ellis do it:
 
 ![Travis (.org)](https://img.shields.io/travis/yanjustino/ellis)
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
 ![GitHub repo size](https://img.shields.io/github/repo-size/yanjustino/ellis)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yanjustino/ellis)
 ![GitHub (Pre-)Release Date](https://img.shields.io/github/release-date-pre/yanjustino/ellis)
-
-# ELLIS
-Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data json file to using in application settings file in distincts environment. See how ellis do it:
 
 ## Lifecycle
 <p align="center">
