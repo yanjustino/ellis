@@ -3,9 +3,6 @@
 </p>
 
 
-
-Production secrets shouldn't be used for development or test. In addition, secrets should not be implanted with the application. Now consider that your application needs to run in different environments and that for each one it needs a different secret. In this context, your application needs to manage different keys or it will carry several messages with secret managers to establish a communication. Was there a simple way?
-
 ![Travis (.org)](https://img.shields.io/travis/yanjustino/ellis)
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
 ![GitHub repo size](https://img.shields.io/github/repo-size/yanjustino/ellis)
