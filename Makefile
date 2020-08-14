@@ -1,7 +1,7 @@
 # Name of the project
 # choco install make
 PROJECT_DIR := ${CURDIR}/dist
-DIST_FOLDER=dist
+DIST_FOLDER=bin
 
 # go build command
 GB = go build -o
@@ -21,7 +21,7 @@ install:
 	@ echo "Compiling ellis"
 	@ $(GB) $(DIST_FOLDER)/ellis
 	@ echo $0
-	@ export PATH=$(PATH):$(PROJECT_DIR)/ellis
+	@ export PATH=$(PATH):$(PROJECT_DIR)
 	@ echo "Done!"
 
 .PHONY: install
