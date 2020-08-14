@@ -84,7 +84,18 @@ This image describes the following workflow. The person A (Alice 👩) generates
 
 ⚠️ optional command
 
+# Guide to contributing to a GitHub project
+This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
 
+* Fork the project & clone locally.
+* Create an upstream remote and sync your local copy before you branch.
+* Branch for each separate piece of work.
+* Do the work, write good commit messages, and read the CONTRIBUTING file if there is one.
+* Push to your origin repository.
+* Create a new PR in GitHub.
+* Respond to any code review feedback.
+
+If you want to contribute to an open source project, the best one to pick is one that you are using yourself. The maintainers will appreciate it!
 
 # Who was James H. Ellis 
 James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. He had a simple but clever idea: 
