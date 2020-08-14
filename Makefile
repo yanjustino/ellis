@@ -11,7 +11,6 @@ install-windows:
 	@ if not exist $(DIST_FOLDER) mkdir $(DIST_FOLDER)
 	@echo "Compiling ellis"
 	@ $(GB) $(DIST_FOLDER)/ellis.exe
-	@ set PATH=$(PATH);$(PROJECT_DIR)
 	@echo "Done!"
 
 install:
