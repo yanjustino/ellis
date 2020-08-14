@@ -13,7 +13,7 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
 ## Lifecycle
 <p align="center">
   <label><strong>Figure 1.</strong> The ellis lifecycle</label>
-  <img height="600" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+  <img width="100%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
 </p>
 
 The Person' (Alice :girl:) uses the command  **`ellis keys -g {jwk-file-path}`** to generate de key-pair. Alice Take the private key and sends the public key (JWK) to Person'' (Bob :boy:). Now Bob, with public key, can register secret keys using de command **`ellis set -k {jwk-file-path} [key] [value]`**. After that, Bob can list ther registerd keys with the command **`ellis list -k {jwk-file-path}`**. The result will be like this:
