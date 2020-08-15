@@ -14,13 +14,12 @@ install-windows:
 	@echo "Done!"
 
 install:
-	@ echo "Creating dist folder $(DIST_FOLDER)"
+	@echo "Creating dist folder $(DIST_FOLDER)"
 	@ mkdir -p $(DIST_FOLDER)
-
-	@ echo "Compiling ellis"
+	@echo "Compiling ellis"
 	@ $(GB) $(DIST_FOLDER)/ellis
-	@ echo $0
-	@ export PATH=$(PROJECT_DIR):$PATH
-	@ echo "Done!"
+	@echo $0
+	@PATH=$(PROJECT_DIR):$PATH; cscope --version
+	@echo "Done!"
 
 .PHONY: install
