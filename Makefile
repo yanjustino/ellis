@@ -11,7 +11,7 @@ install:
 	@echo "Compiling ellis"
 	@$(GB) bin/ellis
 	@echo $0
-	@export PATH=$PATH:${CURDIR}/bin
+	@export PATH=$(PATH):${CURDIR}/bin
 	@echo "Done!"
 
 install-windows:
