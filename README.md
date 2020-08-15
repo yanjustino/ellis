@@ -19,9 +19,46 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
 
 This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle.
 
-# Usage
+# Getting Started
 
-<table>
+### Generate Key
+```
+ellis keys -g [label]
+```
+This command will create two files: 🔑[PEM] and 🔑{JWK}
+
+### Encrypt Secrets
+```
+ellis set -k [jwk-file] "key" "value"
+```
+This command stores the secret (🔑{JWK}[🔒 secret])
+
+### List or View Encrypted Secrets
+```
+ellis list -k [jwk-file]
+Output
+[0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
+[1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
+
+
+ellis view -k [jwk-file]
+Output
+{
+   "Items": [
+      {
+         "key": "keyA",
+         "value": "DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3Mm6iGbJB..."
+      },
+      {
+         "key": "keyB",
+         "value": "eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3SsTbYXgy..."
+      }
+   ]
+}
+```
+This command shown a list of encrypted secrets (🔑{JWK}[🔒 secret])
+
+<table width='100%'>
     <thead>
         <tr>
             <th>Command</th>
@@ -66,8 +103,6 @@ This image describes the following workflow. The person A (Alice 👩) generates
         </tr>
     </tbody>
 </table>
-
-⚠️ optional command
 
 # Guide to contributing to a GitHub project
 This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
