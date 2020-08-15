@@ -40,7 +40,6 @@ Output
 [0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
 [1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
 
-
 ellis view -k [jwk-file]
 Output
 {
@@ -58,51 +57,12 @@ Output
 ```
 This command shown a list of encrypted secrets (🔑{JWK}[🔒 secret])
 
-<table width='100%'>
-    <thead>
-        <tr>
-            <th>Command</th>
-            <th>Result</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td width='50%'>
-              Generate Keys <br/>
-              <code>ellis keys -g [label]</code> 
-            </td>
-            <td width='50%'>Files 🔑[PEM] and 🔑{JWK}</td>
-        </tr>
-        <tr>
-            <td> 
-              Encrypt Secrets <br/>
-              <code>ellis set -k [jwk-file] "key" "value"</code> 
-            </td>
-            <td>store the [🔒 secret]</td>
-        </tr>
-        <tr>
-            <td> 
-              List Secrets <br/>
-              <code>ellis list -k [jwk-file]</code>
-            </td>
-            <td>list of [🔒 secret]</td>
-        </tr>
-        <tr>
-            <td> 
-              View Encrypted Setting <br/>
-              <code>ellis view -k [jwk-file]</code> 
-            </td>
-            <td>preview [label].settings.json 📄[JSON] </td>
-        </tr>
-        <tr>
-            <td>
-              Create Encrypted Setting <br/>
-              <code>ellis eject -k [jwk-file]</code> 
-            </td>
-            <td>creates [label].settings.json 📄[JSON] </td>
-        </tr>
-    </tbody>
-</table>
+###  Create Encrypted Setting
+```
+ellis eject -k [jwk-file]
+```
+This command creates [label].settings.json file 📄[JSON]
+
 
 # Guide to contributing to a GitHub project
 This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
