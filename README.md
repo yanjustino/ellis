@@ -24,35 +24,44 @@ This image describes the following workflow. The person A (Alice 👩) generates
 <table>
     <thead>
         <tr>
-            <th>Actor</th>
             <th>Command</th>
             <th>Result</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td width='5%' align='center'> 👩 </td>
-            <td width='45%'><code><strong>ellis keys -g [label]</strong></code> </td>
-            <td width='45%'>Files 🔑[PEM] and 🔑{JWK}</td>
+            <td width='50%'>
+              Generate Keys <br/>
+              <code>ellis keys -g [label]</code> 
+            </td>
+            <td width='50%'>Files 🔑[PEM] and 🔑{JWK}</td>
         </tr>
         <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis set -k [jwk-file] "key" "value"</strong></code> </td>
+            <td> 
+              Encrypt Secrets <br/>
+              <code>ellis set -k [jwk-file] "key" "value"</code> 
+            </td>
             <td>store the [🔒 secret]</td>
         </tr>
         <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis list -k [jwk-file]</strong></code> </td>
+            <td> 
+              List Secrets <br/>
+              <code>ellis list -k [jwk-file]</code>
+            </td>
             <td>list of [🔒 secret]</td>
         </tr>
         <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis view -k [jwk-file]</strong></code> </td>
+            <td> 
+              View Encrypted Setting <br/>
+              <code>ellis view -k [jwk-file]</code> 
+            </td>
             <td>preview [label].settings.json 📄[JSON] </td>
         </tr>
         <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis eject -k [jwk-file]</strong></code> </td>
+            <td>
+              Create Encrypted Setting <br/>
+              <code>ellis eject -k [jwk-file]</code> 
+            </td>
             <td>creates [label].settings.json 📄[JSON] </td>
         </tr>
     </tbody>
