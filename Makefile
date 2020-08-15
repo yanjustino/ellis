@@ -1,7 +1,6 @@
 # Name of the project
 # choco install make
 PROJECT_DIR := ${CURDIR}/bin
-PATH := ${CURDIR}/bin:$(PATH)
 
 # go build command
 GB = go build -o
