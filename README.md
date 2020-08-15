@@ -13,7 +13,8 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
 ## Lifecycle
 <p align="center">
   <label><strong>Figure 1.</strong> The ellis lifecycle</label>
-  <img width="100%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+  
+  <img width="80%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/diagram.png">
 </p>
 
 This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle.
