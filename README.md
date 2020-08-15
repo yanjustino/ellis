@@ -16,14 +16,14 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
   <img width="100%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
 </p>
 
-This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle
+This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle.
 
 # Usage
+
 <table>
     <thead>
         <tr>
             <th>Actor</th>
-            <th>Action</th>
             <th>Command</th>
             <th>Result</th>
         </tr>
@@ -31,9 +31,8 @@ This image describes the following workflow. The person A (Alice 👩) generates
     <tbody>
         <tr>
             <td width='5%' align='center'> 👩 </td>
-            <td width='25%'>Creating encryption keys</td>
-            <td width='35%'><code><strong>ellis keys -g [label]</strong></code> </td>
-            <td width='35%'>Files 🔑[PEM] and 🔑{JWK}</td>
+            <td width='45%'><code><strong>ellis keys -g [label]</strong></code> </td>
+            <td width='45%'>Files 🔑[PEM] and 🔑{JWK}</td>
         </tr>
         <tr>
             <td align='center'> 👩 </td>
@@ -41,43 +40,39 @@ This image describes the following workflow. The person A (Alice 👩) generates
         </tr>
         <tr>
             <td align='center'> 👩 </td>
-            <td align='center' colspan='3'>Send 🔑{JWK} to 👨</td>
+            <td align='center' colspan='2'>Send 🔑{JWK} to 👨</td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td align='center' colspan='3'>Recives 🔑{JWK} from 👩</td>
+            <td align='center' colspan='2'>Recives 🔑{JWK} from 👩</td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td>Set a secret</td>
             <td> <code><strong>ellis set -k [jwk-file] "key" "value"</strong></code> </td>
             <td>store the [🔒 secret]</td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td>List secrets ⚠️ </td>
             <td> <code><strong>ellis list -k [jwk-file]</strong></code> </td>
             <td>list of [🔒 secret]</td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td>Preview secrets ⚠️ </td>
             <td> <code><strong>ellis view -k [jwk-file]</strong></code> </td>
             <td>preview [label].settings.json 📄[JSON] </td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td>Create settings file</td>
             <td> <code><strong>ellis eject -k [jwk-file]</strong></code> </td>
             <td>creates [label].settings.json 📄[JSON] </td>
         </tr>
         <tr>
             <td align='center'> 👨 </td>
-            <td align='center' colspan='3'>Send settings file 📄[JSON] to 👩</td>
+            <td align='center' colspan='2'>Send settings file 📄[JSON] to 👩</td>
         </tr>
         <tr>
             <td align='center'> 👩 </td>
-            <td align='center' colspan='3'>Recives settings file 📄[JSON] from 👨 </td>
+            <td align='center' colspan='2'>Recives settings file 📄[JSON] from 👨 </td>
         </tr>
     </tbody>
 </table>
