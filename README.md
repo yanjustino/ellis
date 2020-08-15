@@ -67,6 +67,18 @@ ellis eject -k [jwk-file]
 ```
 This command creates [label].settings.json file 📄[JSON]
 
+### Download ELLIS
+
+You can download a realiase version [clicking here](https://github.com/yanjustino/ellis/releases). Another way is use [Make](https://www.gnu.org/software/make/) to build the ellis program:
+
+```
+$ git clone https://github.com/yanjustino/ellis.git
+$ cd ellis
+$ make install
+```
+
+This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`
+
 
 # Guide to contributing to a GitHub project
 This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
@@ -82,9 +94,7 @@ This is a guide to contributing to this open source project that uses GitHub. It
 If you want to contribute to an open source project, the best one to pick is one that you are using yourself. The maintainers will appreciate it!
 
 # Who was James H. Ellis 
-James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. He had a simple but clever idea: 
-
-> Closing and opening are inverse operations. In that sense "Alice" (:girl: :key: :unlock:) could open a lock and keep the key and send the open lock to "Bob". Bob (:boy: :lock: :email:) closes his message and sends it back to Alice (:girl: :key: :unlock: :email:). No keys are exchanged. This means that she (:girl: :unlock: :unlock: :unlock: :unlock:) could publish the padlock widely and allow any person to send a message, having to keep track of only one key.
+James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. 
 
 # References
 * [RSA encryptation](https://tools.ietf.org/html/rfc3447)
