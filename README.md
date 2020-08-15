@@ -67,7 +67,7 @@ ellis eject -k [jwk-file]
 ```
 This command creates [label].settings.json file 📄[JSON]
 
-### Download ELLIS
+# Download ELLIS
 
 You can download a realiase version [clicking here](https://github.com/yanjustino/ellis/releases). Another way is use [Make](https://www.gnu.org/software/make/) to build the ellis program:
 
