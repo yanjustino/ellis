@@ -23,19 +23,19 @@ This image describes the following workflow. The person A (Alice 👩) generates
 
 ### Generate Key
 ```
-ellis keys -g [label]
+$ ellis keys -g [label]
 ```
 This command will create two files: 🔑[PEM] and 🔑{JWK}
 
 ### Encrypt Secrets
 ```
-ellis set -k [jwk-file] "key" "value"
+$ ellis set -k [jwk-file] "key" "value"
 ```
 This command stores the secret (🔑{JWK}[🔒 secret])
 
 ### List or View Encrypted Secrets
 ```
-ellis list -k [jwk-file]
+$ ellis list -k [jwk-file]
 
 Output
 [0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
@@ -43,7 +43,7 @@ Output
 ```
 
 ```
-ellis view -k [jwk-file]
+$ ellis view -k [jwk-file]
 
 Output
 {
@@ -63,7 +63,7 @@ This command shown a list of encrypted secrets (🔑{JWK}[🔒 secret])
 
 ###  Create Encrypted Setting
 ```
-ellis eject -k [jwk-file]
+$ ellis eject -k [jwk-file]
 ```
 This command creates [label].settings.json file 📄[JSON]
 
