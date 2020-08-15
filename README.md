@@ -77,7 +77,8 @@ $ cd ellis
 $ make install
 ```
 
-This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`
+This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`. 
+You should register ellis in environment variables to be able to execute the script anywhere on your system by just typing in its name, without having to include the full path as you type it.
 
 
 # Guide to contributing to a GitHub project
