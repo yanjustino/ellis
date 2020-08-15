@@ -36,18 +36,6 @@ This image describes the following workflow. The person A (Alice 👩) generates
             <td width='45%'>Files 🔑[PEM] and 🔑{JWK}</td>
         </tr>
         <tr>
-            <td align='center'> 👩 </td>
-            <td colspan='3' align='center'>Store 🔑[PEM]</td>
-        </tr>
-        <tr>
-            <td align='center'> 👩 </td>
-            <td align='center' colspan='2'>Send 🔑{JWK} to 👨</td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td align='center' colspan='2'>Recives 🔑{JWK} from 👩</td>
-        </tr>
-        <tr>
             <td align='center'> 👨 </td>
             <td> <code><strong>ellis set -k [jwk-file] "key" "value"</strong></code> </td>
             <td>store the [🔒 secret]</td>
@@ -66,14 +54,6 @@ This image describes the following workflow. The person A (Alice 👩) generates
             <td align='center'> 👨 </td>
             <td> <code><strong>ellis eject -k [jwk-file]</strong></code> </td>
             <td>creates [label].settings.json 📄[JSON] </td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td align='center' colspan='2'>Send settings file 📄[JSON] to 👩</td>
-        </tr>
-        <tr>
-            <td align='center'> 👩 </td>
-            <td align='center' colspan='2'>Recives settings file 📄[JSON] from 👨 </td>
         </tr>
     </tbody>
 </table>
