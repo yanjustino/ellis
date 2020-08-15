@@ -17,8 +17,7 @@ install:
 	@mkdir -p bin
 	@echo "Compiling ellis"
 	@$(GB) bin/ellis
-	@export ${CURDIR}/bin:$(PATH)
-	@echo $(PATH)
+	@export PATH=${CURDIR}/bin:$(PATH)
 	@echo "Done!"
 
 .PHONY: install
