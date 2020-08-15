@@ -36,11 +36,15 @@ This command stores the secret (🔑{JWK}[🔒 secret])
 ### List or View Encrypted Secrets
 ```
 ellis list -k [jwk-file]
+
 Output
 [0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
 [1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
+```
 
+```
 ellis view -k [jwk-file]
+
 Output
 {
    "Items": [
