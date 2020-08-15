@@ -1,25 +1,24 @@
 # Name of the project
 # choco install make
 PROJECT_DIR := ${CURDIR}/bin
-DIST_FOLDER=bin
+PATH := ${CURDIR}/bin:$(PATH)
 
 # go build command
 GB = go build -o
 
 install-windows:
-	@echo "Creating dist folder $(DIST_FOLDER)"
-	@ if not exist $(DIST_FOLDER) mkdir $(DIST_FOLDER)
-	@echo "Compiling ellis"
-	@ $(GB) $(DIST_FOLDER)/ellis.exe
-	@echo "Done!"
+	echo "Creating bin folder $(PROJECT_DIR)"
+	if not exist bin mkdir bin
+	echo "Compiling ellis"
+	$(GB) bin/ellis.exe
+	echo "Done!"
 
 install:
-	@echo "Creating dist folder $(DIST_FOLDER)"
-	@ mkdir -p $(DIST_FOLDER)
-	@echo "Compiling ellis"
-	@ $(GB) $(DIST_FOLDER)/ellis
-	@echo $0
-	@PATH=$(PROJECT_DIR):$PATH; cscope --version
-	@echo "Done!"
+	echo "Creating bin folder $(PROJECT_DIR)"
+	mkdir -p bin
+	echo "Compiling ellis"
+	$(GB) bin/ellis
+	export PATH
+	echo "Done!"
 
 .PHONY: install
