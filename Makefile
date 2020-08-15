@@ -7,18 +7,19 @@ PATH := ${CURDIR}/bin:$(PATH)
 GB = go build -o
 
 install-windows:
-	echo "Creating bin folder $(PROJECT_DIR)"
-	if not exist bin mkdir bin
-	echo "Compiling ellis"
-	$(GB) bin/ellis.exe
-	echo "Done!"
+	@echo "Creating bin folder $(PROJECT_DIR)"
+	@if not exist bin mkdir bin
+	@echo "Compiling ellis"
+	@$(GB) bin/ellis.exe
+	@echo "Done!"
 
 install:
-	echo "Creating bin folder $(PROJECT_DIR)"
-	mkdir -p bin
-	echo "Compiling ellis"
-	$(GB) bin/ellis
-	export PATH
-	echo "Done!"
+	@echo "Creating bin folder $(PROJECT_DIR)"
+	@mkdir -p bin
+	@echo "Compiling ellis"
+	@$(GB) bin/ellis
+	@export ${CURDIR}/bin:$(PATH)
+	@echo $(PATH)
+	@echo "Done!"
 
 .PHONY: install
