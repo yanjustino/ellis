@@ -80,6 +80,8 @@ $ make install
 This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`. 
 You should register ellis in environment variables to be able to execute the script anywhere on your system by just typing in its name, without having to include the full path as you type it.
 
+# Who was James H. Ellis 
+James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. 
 
 # Guide to contributing to a GitHub project
 This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
@@ -94,8 +96,7 @@ This is a guide to contributing to this open source project that uses GitHub. It
 
 If you want to contribute to an open source project, the best one to pick is one that you are using yourself. The maintainers will appreciate it!
 
-# Who was James H. Ellis 
-James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. 
+
 
 # References
 * [RSA encryptation](https://tools.ietf.org/html/rfc3447)
