@@ -13,71 +13,75 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
 ## Lifecycle
 <p align="center">
   <label><strong>Figure 1.</strong> The ellis lifecycle</label>
-  <img width="100%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/lifecycle.png">
+  
+  <img width="80%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/diagram.png">
 </p>
 
 This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle.
 
-# Usage
+# Getting Started
 
-<table>
-    <thead>
-        <tr>
-            <th>Actor</th>
-            <th>Command</th>
-            <th>Result</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td width='5%' align='center'> 👩 </td>
-            <td width='45%'><code><strong>ellis keys -g [label]</strong></code> </td>
-            <td width='45%'>Files 🔑[PEM] and 🔑{JWK}</td>
-        </tr>
-        <tr>
-            <td align='center'> 👩 </td>
-            <td colspan='3' align='center'>Store 🔑[PEM]</td>
-        </tr>
-        <tr>
-            <td align='center'> 👩 </td>
-            <td align='center' colspan='2'>Send 🔑{JWK} to 👨</td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td align='center' colspan='2'>Recives 🔑{JWK} from 👩</td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis set -k [jwk-file] "key" "value"</strong></code> </td>
-            <td>store the [🔒 secret]</td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis list -k [jwk-file]</strong></code> </td>
-            <td>list of [🔒 secret]</td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis view -k [jwk-file]</strong></code> </td>
-            <td>preview [label].settings.json 📄[JSON] </td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td> <code><strong>ellis eject -k [jwk-file]</strong></code> </td>
-            <td>creates [label].settings.json 📄[JSON] </td>
-        </tr>
-        <tr>
-            <td align='center'> 👨 </td>
-            <td align='center' colspan='2'>Send settings file 📄[JSON] to 👩</td>
-        </tr>
-        <tr>
-            <td align='center'> 👩 </td>
-            <td align='center' colspan='2'>Recives settings file 📄[JSON] from 👨 </td>
-        </tr>
-    </tbody>
-</table>
+### Generate Key
+```
+$ ellis keys -g [label]
+```
+This command will create two files: 🔑[PEM] and 🔑{JWK}
 
-⚠️ optional command
+### Encrypt Secrets
+```
+$ ellis set -k [jwk-file] "key" "value"
+```
+This command stores the secret (🔑{JWK}[🔒 secret])
+
+### List or View Encrypted Secrets
+```
+$ ellis list -k [jwk-file]
+
+Output
+[0] key: keyA - value: DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3...
+[1] key: keyB - value: eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3...
+```
+
+```
+$ ellis view -k [jwk-file]
+
+Output
+{
+   "Items": [
+      {
+         "key": "keyA",
+         "value": "DdQ5brEeK8lYyT0g72OUnrkVlbDUu0UYZu0W67U9EOvxGkjXVVWTQ3Mm6iGbJB..."
+      },
+      {
+         "key": "keyB",
+         "value": "eB2OH+r6B6K1WW79vY+2kosxewlc2cyeDNGhT87pyH1AE5rHdqIcm3SsTbYXgy..."
+      }
+   ]
+}
+```
+This command shown a list of encrypted secrets (🔑{JWK}[🔒 secret])
+
+###  Create Encrypted Setting
+```
+$ ellis eject -k [jwk-file]
+```
+This command creates [label].settings.json file 📄[JSON]
+
+# Download ELLIS
+
+You can download a realiase version [clicking here](https://github.com/yanjustino/ellis/releases). Another way is use [Make](https://www.gnu.org/software/make/) to build the ellis program:
+
+```
+$ git clone https://github.com/yanjustino/ellis.git
+$ cd ellis
+$ make install
+```
+
+This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`. 
+You should register ellis in environment variables to be able to execute the script anywhere on your system by just typing in its name, without having to include the full path as you type it.
+
+# Who was James H. Ellis 
+James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. 
 
 # Guide to contributing to a GitHub project
 This is a guide to contributing to this open source project that uses GitHub. It’s mostly based on how many open sorce projects operate. That’s all there is to it. The fundamentals are:
@@ -92,10 +96,7 @@ This is a guide to contributing to this open source project that uses GitHub. It
 
 If you want to contribute to an open source project, the best one to pick is one that you are using yourself. The maintainers will appreciate it!
 
-# Who was James H. Ellis 
-James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. He had a simple but clever idea: 
 
-> Closing and opening are inverse operations. In that sense "Alice" (:girl: :key: :unlock:) could open a lock and keep the key and send the open lock to "Bob". Bob (:boy: :lock: :email:) closes his message and sends it back to Alice (:girl: :key: :unlock: :email:). No keys are exchanged. This means that she (:girl: :unlock: :unlock: :unlock: :unlock:) could publish the padlock widely and allow any person to send a message, having to keep track of only one key.
 
 # References
 * [RSA encryptation](https://tools.ietf.org/html/rfc3447)
