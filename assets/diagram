@@ -1,0 +1,8 @@
+sequenceDiagram
+	Alice->>+Alice: Generate Keys
+    Alice->>+Alice: Store PEM Key
+    Alice->>-Bob: Send JWK
+    Bob->>+Bob: Encrypt Secret
+    Bob->>+Console: List Encrypted Secrets
+    Bob->>+Console: View Encrypted Settings
+    Bob-->>-Alice: Generate Encrypted Settings File
