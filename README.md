@@ -2,7 +2,7 @@
   <img height="300" src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/image.png">
 </p>
 
-Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data json (JWK) file to using in application settings file. See how ellis do it:
+Ellis is a simple secret encrypter. It uses de concept of public-key cryptography to produces encrypted data JSON (JWK) file to use in an application settings file. See how Ellis do it:
 
 ![Travis (.org)](https://img.shields.io/travis/yanjustino/ellis)
 [![analysis](https://img.shields.io/codeclimate/maintainability/yanjustino/ellis)](https://codeclimate.com/github/yanjustino/ellis)
@@ -17,7 +17,7 @@ Ellis is a simple secret encrypter. It uses de concept of public-key cryptograph
   <img width="80%"  src="https://raw.githubusercontent.com/yanjustino/ellis/master/assets/diagram.png">
 </p>
 
-This image describes the following workflow. The person A (Alice 👩) generates two cryptography keys (PEM an JWK), take the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with public key, can register secret keys. After that, Bob can list and preview the encryhpted secrets. Fanilly, Bob can generate a encrypted settings file  and send it to Alice. These steps describe the ellis life cycle.
+This image describes the following workflow. Person A (Alice 👩) generates two cryptography keys (PEM a JWK), takes the private key and sends the public key (JWK) to Person B (Bob 👨). Now Bob, with the public key, can register secret keys. After that, Bob can list and preview the encrypted secrets. Finally, Bob can generate an encrypted settings file and send it to Alice. These steps describe the Ellis life cycle
 
 # Getting Started
 
@@ -89,8 +89,7 @@ $ cd ellis
 $ make install
 ```
 
-This commands will generate ellis program in `./bin` directory. If you are a windows user, the programa will be `./bin/ellis.exe`. 
-You should register ellis in environment variables to be able to execute the script anywhere on your system by just typing in its name, without having to include the full path as you type it.
+These commands will generate the Ellis program in ./bin directory. If you are a windows user, the program will be ./bin/ellis.exe. You should register Ellis in environment variables to be able to execute the script anywhere on your system by just typing in its name, without having to include the full path as you type it.
 
 # Who was James H. Ellis 
 James Henry Ellis (25 September 1924 – 25 November 1997) was a British engineer and **cryptographer**. In 1970, while working at the Government Communications Headquarters (GCHQ) in Cheltenham, he conceived of the possibility of "non-secret encryption", more commonly termed **public-key cryptography**. 
@@ -114,4 +113,11 @@ If you want to contribute to an open source project, the best one to pick is one
 * [RSA encryptation](https://tools.ietf.org/html/rfc3447)
 * [JSON Web Key (JWK)](https://openid.net/specs/draft-jones-json-web-key-03.html)
 * [Safe storage of app secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
+
+# Special Thanks
+You're the best!
+
+* Text reviser
+  * [Thiago Lunardi](https://github.com/thiagolunardi)
+
 
