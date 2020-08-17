@@ -11,7 +11,7 @@ type KeyGenerateArgs struct {
 	Args []string
 }
 
-/* keys -g {{identification}} */
+/* keys -g {{id}} */
 func (args KeyGenerateArgs) CanExecute() bool {
 	param := args.Args[1:]
 

@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+*.zip
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,6 +16,7 @@
  vendor/
 .idea/
 dist/
+bin/
 tests/*.json
 tests/*.data
 tests/*.key

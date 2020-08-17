@@ -12,7 +12,7 @@ type SetSecretArgs struct {
 	Args []string
 }
 
-/* set -k {{file}} {{key}} {{value}}*/
+/* set -k {{jwt path}} {{key}} {{value}}*/
 func (args SetSecretArgs) CanExecute() bool {
 	param := args.Args[1:]
 

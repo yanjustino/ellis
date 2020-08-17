@@ -4,7 +4,7 @@ type HelpArgs struct {
 	Args []string
 }
 
-/* list -k {{file}} */
+/* list -k {{jwt path}} */
 func (args HelpArgs) CanExecute() bool {
 	param := args.Args[1:]
 
@@ -28,7 +28,8 @@ func AsciiBanner() string {
 }
 
 func Helptext() string {
-	return " Usage: ellis <command> [options] [path-to-jwk]\n" +
+	return "Version: v0.2.0\n" +
+		" Usage: ellis <command> [options] [path-to-jwk]\n" +
 		" Usage: ellis [path-to-jwk]\n" +
 		" \n" +
 		" command:\n" +

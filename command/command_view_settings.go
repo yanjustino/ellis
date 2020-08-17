@@ -11,6 +11,7 @@ type ViewSecretsArgs struct {
 	Args []string
 }
 
+/* view -k {{jwt path}} */
 func (args ViewSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 

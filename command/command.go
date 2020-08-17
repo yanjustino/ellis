@@ -11,6 +11,7 @@ func Builder(args []string) Command {
 		KeyGenerateArgs{args},
 		ListSecretsArgs{args},
 		SetSecretArgs{args},
+		GetSecretArgs{args},
 		ViewSecretsArgs{args},
 		EjectSecretsArgs{args},
 		HelpArgs{args},
@@ -21,5 +22,6 @@ func Builder(args []string) Command {
 			return cmd
 		}
 	}
+
 	return HelpArgs{args}
 }

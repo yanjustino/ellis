@@ -10,8 +10,8 @@ import (
 func TestAllCommands(t *testing.T) {
 	cleanAll()
 	generateKeys(t)
-	listKeys(t)
 	setKeys(t)
+	getKeys(t)
 	listKeys(t)
 	viewKeys(t)
 	ejectSecret(t)
@@ -50,7 +50,23 @@ func setKeys(t *testing.T) {
 	if !fileExists("project.data") {
 		t.Errorf("data file was not created")
 	}
+}
 
+func getKeys(t *testing.T) {
+	set := command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "MYSEC", "SEC0001"}}
+	if !set.Execute() {
+		t.Errorf("Fail when try set secret")
+	}
+
+	get := command.GetSecretArgs{Args: []string{"ellis", "get", "-k", "project.json", "MYSEC"}}
+
+	if !get.CanExecute() {
+		t.Errorf("Inválid Get command")
+	}
+
+	if !get.Execute() {
+		t.Errorf("Fail when try set secret")
+	}
 }
 
 func listKeys(t *testing.T) {

@@ -21,6 +21,12 @@ func LoadPublicKey(jwk Jwk) *key.PublicKey {
 	return rsa.BytesToPublicKey(toByte)
 }
 
+func LoadPrivateKey(jwk Jwk) *key.PrivateKey {
+	bytes := application.ReadFile(jwk.Kid + ".key")
+	privateKey := rsa.BytesToPrivateKey(bytes)
+	return privateKey
+}
+
 func savePrivateKey(key *key.PrivateKey, name string) {
 	bytes := rsa.PrivateKeyToBytes(key)
 	filename := fmt.Sprintf("%v.%v", name, "key")

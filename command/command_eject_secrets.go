@@ -10,7 +10,7 @@ type EjectSecretsArgs struct {
 	Args []string
 }
 
-/* eject -k {{file}} */
+/* eject -k {{jwt path}} */
 func (args EjectSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 

@@ -15,7 +15,7 @@ func (args ListSecretsArgs) AfterExecute() {
 	panic("implement me")
 }
 
-/* list -k {{file}} */
+/* list -k {{jwt path}} */
 func (args ListSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 

@@ -23,13 +23,13 @@ type Holder struct {
 func StoreSecretKey(path string, key string, value string) {
 	jwk := keys.JsonToJwk(application.ReadFile(path))
 	secretKey := prepareRegister(jwk, key, value)
-	secretsByKey := groupSecretsByKey(path, secretKey)
+	secretsByKey := groupSecretsByKey(path)
+	secretsByKey[secretKey.Key] = secretKey
 
 	var values []string
 	for _, v := range secretsByKey {
 		toByteArray, e := json.Marshal(v)
 		application.HandleError(e)
-
 		values = append(values, string(toByteArray))
 	}
 
@@ -40,9 +40,26 @@ func StoreSecretKey(path string, key string, value string) {
 	application.HandleError(e)
 }
 
+func FetchDecryptedSecret(path string, key string) (bool, SecretKey) {
+	jwk := keys.JsonToJwk(application.ReadFile(path))
+	secretsByKey := groupSecretsByKey(path)
+
+	secret := secretsByKey[key]
+
+	if &secret == nil {
+		return false, SecretKey{}
+	} else {
+		bytes := keys.LoadPrivateKey(jwk)
+		valueToDecrypt, e := base64.StdEncoding.DecodeString(secret.Value)
+		application.HandleError(e)
+
+		decryptedValue := rsa.DecryptWithPrivateKey(valueToDecrypt, bytes)
+		return true, SecretKey{Key: key, Value: string(decryptedValue)}
+	}
+}
+
 func FetchAllSecretKeys(jwkFileName string) {
 	holder := getSecretKeysHolder(jwkFileName)
-
 	for i, s := range holder.Items {
 		line := fmt.Sprintf("[%v] key: %v - value: %v", i, s.Key, s.Value)
 		fmt.Println(line)
@@ -51,7 +68,6 @@ func FetchAllSecretKeys(jwkFileName string) {
 
 func FetchSecretKeysHolder(jwkFileName string, eject bool) {
 	holder := getSecretKeysHolder(jwkFileName)
-
 	result, e := json.MarshalIndent(&holder, "", " ")
 	application.HandleError(e)
 
@@ -62,22 +78,26 @@ func FetchSecretKeysHolder(jwkFileName string, eject bool) {
 	}
 }
 
+func (key SecretKey) ToJson() string {
+	b, e := json.MarshalIndent(key, "", " ")
+	application.HandleError(e)
+	return string(b)
+}
+
 // PRIVATE SCOPE
 
 func ejectSecretKeyHolder(path string, holder []byte) {
 	data := application.ReadFile(path)
 	jwk := keys.JsonToJwk(data)
-
 	fileName := fmt.Sprintf("%v.%v", jwk.Kid, "settings.json")
 
 	e := application.CreateFile(fileName, holder)
 	application.HandleError(e)
 }
 
-func groupSecretsByKey(jwkFileName string, defaultSecret SecretKey) map[string]SecretKey {
-	holder := getSecretKeysHolder(jwkFileName)
-
-	secretKeys := append(holder.Items, defaultSecret)
+func groupSecretsByKey(path string) map[string]SecretKey {
+	holder := getSecretKeysHolder(path)
+	secretKeys := append(holder.Items)
 	mappings := map[string]SecretKey{}
 
 	for _, s := range secretKeys {
@@ -107,7 +127,6 @@ func parseFileToSecretKeyArray(path string) []SecretKey {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-
 	for scanner.Scan() {
 		secret := parseBytesToSecret(scanner.Bytes())
 		list = append(list, secret)
