@@ -31,7 +31,19 @@ This command will create two files: 🔑[PEM] and 🔑{JWK}
 ```
 $ ellis set -k [jwk-file] "key" "value"
 ```
-This command stores the secret (🔑{JWK}[🔒 secret])
+This command stores a secret using (🔑{JWK}[🔒 secret])
+
+### Decrypt a Secrets
+```
+$ ellis get -k [jwk-file] "key"
+
+Output
+{
+   "key": "[secert key]",
+   "value": "[plain text]"
+},
+```
+This command decrypt a secret using (🔑{PEM}[🔒 secret])
 
 ### List or View Encrypted Secrets
 ```
