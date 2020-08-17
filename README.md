@@ -41,7 +41,7 @@ Output
 {
    "key": "[secert key]",
    "value": "[plain text]"
-},
+}
 ```
 This command decrypt a secret using (🔑{PEM}[🔒 secret])
 
