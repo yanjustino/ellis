@@ -17,7 +17,7 @@ func (args GetSecretArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("(get\\s-k)(\\s[\\w+/.]*)(\\s[\\w|\".*?\"]*)", input)
+	ok, err := regexp.MatchString("(get\\s-k)(\\s[\\w+/.|\\w+\\.]*)(\\s[\\w|\".*?\"]*)", input)
 	application.HandleError(err)
 
 	return ok && len(param) == 4

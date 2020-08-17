@@ -16,7 +16,7 @@ func (args KeyGenerateArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("(keys\\s-g)(\\s[\\w+]*)", input)
+	ok, err := regexp.MatchString("(keys\\s-g)(\\s[\\w+/.|\\w+\\.]*)", input)
 	application.HandleError(err)
 
 	return ok

@@ -15,7 +15,7 @@ func (args EjectSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("(eject\\s-k)(\\s[\\w+/.]*)", input)
+	ok, err := regexp.MatchString("(eject\\s-k)(\\s[\\w+/.|\\w+\\.]*)", input)
 	if err != nil {
 		println(err.Error())
 		return false

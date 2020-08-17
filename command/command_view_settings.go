@@ -16,7 +16,7 @@ func (args ViewSecretsArgs) CanExecute() bool {
 	param := args.Args[1:]
 
 	input := strings.Join(param, " ")
-	ok, err := regexp.MatchString("(view\\s-k)(\\s[\\w+/.]*)", input)
+	ok, err := regexp.MatchString("(view\\s-k)(\\s[\\w+/.|\\w+\\.]*)", input)
 	application.HandleError(err)
 
 	return ok
