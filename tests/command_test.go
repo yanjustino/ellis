@@ -41,6 +41,12 @@ func setKeys(t *testing.T) {
 		t.Errorf("Fail when try set secret")
 	}
 
+	cmd = command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "USER", "$625asdf%@"}}
+	ok = cmd.Execute()
+	if !ok {
+		t.Errorf("Fail when try set secret")
+	}
+
 	cmd = command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "PASS", "Server=myServerName\\myInstanceName;Database=myDataBase;User Id=myUsername;Password=myPassword;"}}
 	ok = cmd.Execute()
 	if !ok {
@@ -53,7 +59,7 @@ func setKeys(t *testing.T) {
 }
 
 func getKeys(t *testing.T) {
-	set := command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "MYSEC", "SEC0001"}}
+	set := command.SetSecretArgs{Args: []string{"ellis", "set", "-k", "project.json", "MYSEC", "$625asdf%@"}}
 	if !set.Execute() {
 		t.Errorf("Fail when try set secret")
 	}

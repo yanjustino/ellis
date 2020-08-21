@@ -28,7 +28,7 @@ func AsciiBanner() string {
 }
 
 func Helptext() string {
-	return "Version: v0.2.0\n" +
+	return "Version: v0.2.1\n" +
 		" Usage: ellis <command> [options] [path-to-jwk]\n" +
 		" Usage: ellis [path-to-jwk]\n" +
 		" \n" +

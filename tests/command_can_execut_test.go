@@ -21,7 +21,7 @@ func TestCanExecuteSetKeys(t *testing.T) {
 	args = []string{"ellis", "set", "-k", "folder/project.json", "Key", "12$%*&3@#)("}
 	executeCommand(t, args)
 
-	args = []string{"ellis", "set", "-k", "folder/project.json", "Key.z", "Value_A"}
+	args = []string{"ellis", "set", "-k", "folder/project.json", "Key-z", "Value_A"}
 	executeCommand(t, args)
 
 	args = []string{"ellis", "set", "-k", "folder/project.json", "Key", "Server=myServerName\\myInstanceName;Database=myDataBase;User Id=myUsername;Password=myPassword;"}
